@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjk40iqthhx31"]
+
+[ext_resource type="Script" uid="uid://cb27baxetpcfl" path="res://scenes/places/location.gd" id="1_lfgka"]
+[ext_resource type="Texture2D" uid="uid://bvwseptf0e47d" path="res://assets/backgrounds/pompidou.jpg" id="2_cov1t"]
+
+[node name="Pompidou" type="Node2D" node_paths=PackedStringArray("left", "right")]
+script = ExtResource("1_lfgka")
+left = NodePath("Warps/Left")
+right = NodePath("Warps/Right")
+metadata/_custom_type_script = "uid://cb27baxetpcfl"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_cov1t")
+centered = false
+
+[node name="Warps" type="Node2D" parent="."]
+position = Vector2(0, 151)
+
+[node name="Left" type="Node2D" parent="Warps"]
+
+[node name="Right" type="Node2D" parent="Warps"]
+position = Vector2(320, 12)

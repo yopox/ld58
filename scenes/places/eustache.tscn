@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsx26338og6x2"]
+
+[ext_resource type="Script" uid="uid://cb27baxetpcfl" path="res://scenes/places/location.gd" id="1_cy0xe"]
+[ext_resource type="Texture2D" uid="uid://brtxur2j3ii67" path="res://assets/backgrounds/eustache.jpg" id="2_omckv"]
+
+[node name="Eustache" type="Node" node_paths=PackedStringArray("left", "right")]
+script = ExtResource("1_cy0xe")
+left = NodePath("Warps/Left")
+right = NodePath("Warps/Right")
+metadata/_custom_type_script = "uid://cb27baxetpcfl"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_omckv")
+centered = false
+
+[node name="Warps" type="Node2D" parent="."]
+
+[node name="Left" type="Node2D" parent="Warps"]
+position = Vector2(0, 160)
+
+[node name="Right" type="Node2D" parent="Warps"]
+position = Vector2(320, 127)

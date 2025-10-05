@@ -1,5 +1,5 @@
 class_name Location
-extends Node
+extends Node2D
 
 
 @export var left: Node2D
