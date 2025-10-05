@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://c20p8uid5qfsa"]
+[gd_scene load_steps=8 format=3 uid="uid://c20p8uid5qfsa"]
 
 [ext_resource type="Script" uid="uid://dewgxenckssve" path="res://scenes/place.gd" id="1_wi51d"]
-[ext_resource type="Theme" uid="uid://1yl3fwpdo5qg" path="res://resources/embalm_bold.tres" id="2_5c4eq"]
 [ext_resource type="PackedScene" uid="uid://tbil5pu2sjdx" path="res://actors/player/player.tscn" id="3_5ow0v"]
 [ext_resource type="PackedScene" uid="uid://d310o3x37bmjf" path="res://scenes/ui/textbox.tscn" id="4_bx3fn"]
+[ext_resource type="Shader" uid="uid://c2b1gv7pufr2d" path="res://resources/no_alpha.gdshader" id="4_qep2a"]
+[ext_resource type="FontFile" uid="uid://dtlb64rh248c6" path="res://assets/fonts/embalm_bold.ttf" id="5_rjk60"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qep2a"]
+shader = ExtResource("4_qep2a")
+
+[sub_resource type="Theme" id="Theme_bx3fn"]
+default_font = ExtResource("5_rjk60")
+default_font_size = 16
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 1
 
 [node name="Place" type="Node2D"]
 script = ExtResource("1_wi51d")
@@ -14,11 +24,12 @@ script = ExtResource("1_wi51d")
 position = Vector2(24, 152)
 
 [node name="Name" type="Label" parent="."]
+material = SubResource("ShaderMaterial_qep2a")
 offset_left = 16.0
 offset_top = 12.0
 offset_right = 105.0
 offset_bottom = 35.0
-theme = ExtResource("2_5c4eq")
+theme = SubResource("Theme_bx3fn")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 text = "Place name"
 
