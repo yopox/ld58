@@ -1,5 +1,5 @@
 class_name Actor
-extends Sprite2D
+extends Node2D
 
 signal interact()
 

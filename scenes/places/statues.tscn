@@ -1,10 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcunsckap4hy7"]
+[gd_scene load_steps=14 format=3 uid="uid://dcunsckap4hy7"]
 
-[ext_resource type="Script" uid="uid://cb27baxetpcfl" path="res://scenes/places/location.gd" id="1_vy1fc"]
+[ext_resource type="Script" uid="uid://bnvqlbgdyiqnj" path="res://scenes/places/statues.gd" id="1_8uw8k"]
 [ext_resource type="Texture2D" uid="uid://emwbqevkbcn5" path="res://assets/backgrounds/statues.jpg" id="2_tts8o"]
+[ext_resource type="PackedScene" uid="uid://b3tr6v6qcve3q" path="res://actors/actor.tscn" id="3_8uw8k"]
+
+[sub_resource type="Gradient" id="Gradient_8uw8k"]
+offsets = PackedFloat32Array(0.005988024, 0.76047903)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0berv"]
+gradient = SubResource("Gradient_8uw8k")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_663r4"]
+offsets = PackedFloat32Array(0.005988024, 0.76047903)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c4dnu"]
+gradient = SubResource("Gradient_663r4")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_c4dnu"]
+offsets = PackedFloat32Array(0.005988024, 0.76047903)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5mf0b"]
+gradient = SubResource("Gradient_c4dnu")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_5mf0b"]
+offsets = PackedFloat32Array(0.005988024, 0.76047903)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lcamn"]
+gradient = SubResource("Gradient_5mf0b")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_0berv"]
+offsets = PackedFloat32Array(0.005988024, 0.76047903)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_663r4"]
+gradient = SubResource("Gradient_0berv")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Statues" type="Node2D" node_paths=PackedStringArray("left", "right")]
-script = ExtResource("1_vy1fc")
+script = ExtResource("1_8uw8k")
 left = NodePath("Warps/Left")
 right = NodePath("Warps/Right")
 metadata/_custom_type_script = "uid://cb27baxetpcfl"
@@ -20,4 +76,63 @@ position = Vector2(0, 167)
 [node name="Left" type="Node2D" parent="Warps"]
 
 [node name="Right" type="Node2D" parent="Warps"]
-position = Vector2(320, 0)
+position = Vector2(320, 2)
+
+[node name="Statue1" parent="." instance=ExtResource("3_8uw8k")]
+position = Vector2(42, 166)
+
+[node name="Bubble" parent="Statue1" index="1"]
+position = Vector2(14, -46)
+
+[node name="Statue2" parent="." instance=ExtResource("3_8uw8k")]
+position = Vector2(124, 166)
+
+[node name="Bubble" parent="Statue2" index="1"]
+position = Vector2(7, -46)
+
+[node name="Statue3" parent="." instance=ExtResource("3_8uw8k")]
+position = Vector2(203, 166)
+
+[node name="Bubble" parent="Statue3" index="1"]
+position = Vector2(4, -45)
+
+[node name="Statue4" parent="." instance=ExtResource("3_8uw8k")]
+position = Vector2(282, 166)
+
+[node name="Bubble" parent="Statue4" index="1"]
+position = Vector2(4, -45)
+
+[node name="Light1" type="PointLight2D" parent="."]
+position = Vector2(31, 63)
+energy = 2.0
+texture = SubResource("GradientTexture2D_0berv")
+
+[node name="Light2" type="PointLight2D" parent="."]
+position = Vector2(97, 64)
+energy = 2.0
+texture = SubResource("GradientTexture2D_c4dnu")
+
+[node name="Light3" type="PointLight2D" parent="."]
+position = Vector2(161, 65)
+energy = 2.0
+texture = SubResource("GradientTexture2D_5mf0b")
+
+[node name="Light4" type="PointLight2D" parent="."]
+position = Vector2(225, 66)
+energy = 2.0
+texture = SubResource("GradientTexture2D_lcamn")
+
+[node name="Light5" type="PointLight2D" parent="."]
+position = Vector2(290, 66)
+energy = 2.0
+texture = SubResource("GradientTexture2D_663r4")
+
+[connection signal="interact" from="Statue1" to="." method="_on_statue_1_interact"]
+[connection signal="interact" from="Statue2" to="." method="_on_statue_2_interact"]
+[connection signal="interact" from="Statue3" to="." method="_on_statue_3_interact"]
+[connection signal="interact" from="Statue4" to="." method="_on_statue_4_interact"]
+
+[editable path="Statue1"]
+[editable path="Statue2"]
+[editable path="Statue3"]
+[editable path="Statue4"]
