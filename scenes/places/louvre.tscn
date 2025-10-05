@@ -4,8 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://qmhe3hdrs0v5" path="res://assets/backgrounds/louvre.jpg" id="2_v045g"]
 [ext_resource type="PackedScene" uid="uid://b3tr6v6qcve3q" path="res://actors/actor.tscn" id="2_xbybe"]
 
-[node name="Louvre" type="Node2D"]
+[node name="Louvre" type="Node2D" node_paths=PackedStringArray("left", "right")]
 script = ExtResource("1_v045g")
+left = NodePath("Warps/Left")
+right = NodePath("Warps/Right")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(0, -33)
@@ -14,5 +16,13 @@ centered = false
 
 [node name="Test" parent="." instance=ExtResource("2_xbybe")]
 position = Vector2(138, 145)
+
+[node name="Warps" type="Node2D" parent="."]
+
+[node name="Left" type="Node2D" parent="Warps"]
+position = Vector2(0, 160)
+
+[node name="Right" type="Node2D" parent="Warps"]
+position = Vector2(320, 160)
 
 [connection signal="interact" from="Test" to="." method="_on_test_interact"]

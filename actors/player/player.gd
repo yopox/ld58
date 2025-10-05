@@ -1,19 +1,30 @@
 class_name Player
-extends Sprite2D
+extends Node2D
 
+var dir: Vector2
+var x_min: float = 0
+var x_max: float = 360
 
 func _process(delta: float) -> void:
 	if Util.dialog_shown: return
 	
 	var direction = Vector2.ZERO
 	if Input.is_action_pressed("right"):
-		direction += Vector2(1, 0)
+		direction = dir
 	if Input.is_action_pressed("left"):
-		direction += Vector2(-1, 0)
-	if Input.is_action_pressed("up"):
-		direction += Vector2(0, -1)
-	if Input.is_action_pressed("down"):
-		direction += Vector2(0, 1)
+		direction = -dir
 	
-	direction = direction.normalized()
-	position += direction * delta * Values.PLAYER_SPEED
+	var d = delta * Values.PLAYER_SPEED
+	
+	if global_position.x + direction.x * d < x_min:
+		Signals.move_left.emit()
+	elif global_position.x + direction.x * d > x_max:
+		Signals.move_right.emit()
+	else:
+		position += direction * d
+
+
+func set_limits(left: Vector2, right: Vector2) -> void:
+	dir = left.direction_to(right)
+	x_min = left.x
+	x_max = right.x

@@ -9,6 +9,10 @@ func _input(event: InputEvent) -> void:
 # — STATES —
 signal change_scene(scene: Util.Scenes)
 
+# — LOCATIONS —
+signal move_left()
+signal move_right()
+
 # — UI —
 signal show_dialog(speaker_name: String, text: String, position: Vector2)
 signal dialog_over()

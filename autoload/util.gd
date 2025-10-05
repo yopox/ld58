@@ -14,6 +14,8 @@ enum Places {
 	METRO,
 }
 
+const PLACE_ORDER = [Places.BIG_FOUNTAIN, Places.LOUVRE]
+
 var current_place: Places = Places.BIG_FOUNTAIN
 var dialog_shown: bool = false
 

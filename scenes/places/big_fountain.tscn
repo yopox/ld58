@@ -9,8 +9,10 @@ size = Vector2(24, 49)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_y0qkc"]
 
-[node name="BigFountain" type="Node2D"]
+[node name="BigFountain" type="Node2D" node_paths=PackedStringArray("left", "right")]
 script = ExtResource("1_y0qkc")
+left = NodePath("Warps/Left")
+right = NodePath("Warps/Right")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(160, 90)
@@ -41,6 +43,15 @@ shape = SubResource("RectangleShape2D_yot7t")
 position = Vector2(78, 9)
 energy = 8.74
 texture = SubResource("PlaceholderTexture2D_y0qkc")
+
+[node name="Warps" type="Node2D" parent="."]
+position = Vector2(0, 12)
+
+[node name="Left" type="Node2D" parent="Warps"]
+position = Vector2(0, 160)
+
+[node name="Right" type="Node2D" parent="Warps"]
+position = Vector2(320, 160)
 
 [connection signal="interact" from="Delivery Guy" to="." method="_on_delivery_guy_interact"]
 [connection signal="interact" from="Romantic Couple" to="." method="_on_romantic_couple_interact"]
