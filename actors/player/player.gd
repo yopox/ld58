@@ -1,6 +1,8 @@
 class_name Player
 extends Node2D
 
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
 var dir: Vector2
 var x_min: float = 0
 var x_max: float = 360
@@ -10,9 +12,18 @@ func _process(delta: float) -> void:
 	
 	var direction = Vector2.ZERO
 	if Input.is_action_pressed("right"):
+		if sprite.animation != "walking":
+			sprite.play("walking")
+		sprite.flip_h = false
 		direction = dir
-	if Input.is_action_pressed("left"):
+	elif Input.is_action_pressed("left"):
+		if sprite.animation != "walking":
+			sprite.play("walking")
+		sprite.flip_h = true
 		direction = -dir
+	else:
+		if sprite.animation != "default":
+			sprite.play("default")
 	
 	var d = delta * Values.PLAYER_SPEED
 	

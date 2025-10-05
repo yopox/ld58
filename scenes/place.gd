@@ -9,10 +9,12 @@ const POMPIDOU: Resource = preload("uid://bjk40iqthhx31")
 const STATUES: Resource = preload("uid://dcunsckap4hy7")
 
 @onready var current: Node = $Current
-@onready var place_name: Label = $Name
+@onready var place_name: Control = $NameContainer
 @onready var player: Player = $Player
 
 var left: bool = true
+var text_tween: Variant = null
+var id: int = 0
 
 
 func _ready() -> void:
@@ -34,18 +36,37 @@ func move_right() -> void:
 
 
 func set_current_place(p: Util.Places) -> void:
+	id += 1
 	Util.current_place = p
 
 	for node in current.get_children():
 		node.queue_free()
 
 	var place: Location = get_scene(p).instantiate()
-	var pn = get_place_name(p)
-	place_name.text = pn
 	current.add_child(place)
+	show_place_name(p)
 	if left: player.global_position = place.left.global_position
 	else: player.global_position = place.right.global_position
 	player.set_limits(place.left.global_position, place.right.global_position)
+
+
+func show_place_name(p: Util.Places) -> void:
+	if text_tween != null:
+		(text_tween as Tween).stop()
+	
+	var pn = get_place_name(p)
+	for text in place_name.get_children():
+		text.text = pn
+	place_name.modulate = Color("fff")
+	
+	var i = id
+	await Util.wait(Values.LOCATION_TITLE_DISAPPEAR_DELAY)
+	if id != i: return
+	
+	text_tween = get_tree().create_tween()
+	text_tween.tween_property(place_name, "modulate", Color("#ffffff00"), Values.LOCATION_TITLE_DISAPPEAR_DURATION)
+	text_tween.set_ease(Tween.EASE_OUT)
+	text_tween.play()
 
 
 func get_place_name(place: Util.Places) -> String:
