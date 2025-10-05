@@ -42,9 +42,12 @@ func consume_char() -> void:
 		match remaining[0]:
 			'$':
 				await Signals.confirm
+			'/':
+				await Signals.confirm
+				text.text = ""
 			'\n':
 				line += 1
-				if line % 2 == 0:
+				if line % 3 == 0:
 					await Signals.confirm
 					text.text = ""
 				else:
