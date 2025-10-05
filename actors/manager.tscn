@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://c6b0ft1kgu6ci"]
+
+[ext_resource type="Texture2D" uid="uid://lhw6762r258w" path="res://assets/characters/manager.png" id="1_lhbku"]
+
+[sub_resource type="GDScript" id="GDScript_lhbku"]
+script/source = "extends Node2D
+
+class_name Actor
+extends Sprite2D
+
+signal interact()
+
+@onready var bubble: Sprite2D = $Bubble
+
+var can_interact: bool = false
+
+
+func _ready() -> void:
+	bubble.visible = false
+
+
+func _process(_delta: float) -> void:
+	if can_interact and Input.is_action_just_pressed(\"a\"):
+		interact.emit()
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if not area.get_parent() is Player: return
+	can_interact = true
+	bubble.visible = true
+
+
+func _on_hitbox_area_exited(area: Area2D) -> void:
+	if not area.get_parent() is Player: return
+	can_interact = false
+	bubble.visible = false
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xaro1"]
+atlas = ExtResource("1_lhbku")
+region = Rect2(0, 0, 30, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2qhg"]
+atlas = ExtResource("1_lhbku")
+region = Rect2(0, 0, 30, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob1fp"]
+atlas = ExtResource("1_lhbku")
+region = Rect2(30, 0, 30, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjcjp"]
+atlas = ExtResource("1_lhbku")
+region = Rect2(60, 0, 30, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhbku"]
+atlas = ExtResource("1_lhbku")
+region = Rect2(30, 0, 30, 47)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4q3k2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xaro1")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2qhg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob1fp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjcjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhbku")
+}],
+"loop": true,
+"name": &"Talking",
+"speed": 5.0
+}]
+
+[node name="Manager" type="Node2D"]
+script = SubResource("GDScript_lhbku")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4q3k2")
+animation = &"Talking"
+frame_progress = 0.6125273
