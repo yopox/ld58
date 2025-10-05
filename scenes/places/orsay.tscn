@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://3vyk1kg265sn"]
+
+[ext_resource type="Texture2D" uid="uid://lfbcwoy5ekik" path="res://assets/backgrounds/orsay.png" id="1_1i8bs"]
+[ext_resource type="Texture2D" uid="uid://di68afkjl1tjm" path="res://assets/tower/base.png" id="2_qfltt"]
+[ext_resource type="Texture2D" uid="uid://b58d8fw34vpem" path="res://assets/tower/piece4.png" id="3_wu36w"]
+[ext_resource type="Texture2D" uid="uid://darru1uw78wqs" path="res://assets/tower/piece3.png" id="4_ncy5n"]
+[ext_resource type="Texture2D" uid="uid://rbk42cpqyv1c" path="res://assets/tower/piece2.png" id="5_t8cah"]
+[ext_resource type="Texture2D" uid="uid://brs7hot7jvmty" path="res://assets/tower/piece1.png" id="6_h2olg"]
+
+[node name="Orsay" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_1i8bs")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="EiffelTower" type="Node2D" parent="."]
+position = Vector2(130, 50)
+metadata/_edit_group_ = true
+
+[node name="Base" type="Sprite2D" parent="EiffelTower"]
+texture = ExtResource("2_qfltt")
+
+[node name="Part1" type="Sprite2D" parent="EiffelTower"]
+texture = ExtResource("3_wu36w")
+
+[node name="Part2" type="Sprite2D" parent="EiffelTower"]
+texture = ExtResource("4_ncy5n")
+
+[node name="Part3" type="Sprite2D" parent="EiffelTower"]
+texture = ExtResource("5_t8cah")
+
+[node name="Part4" type="Sprite2D" parent="EiffelTower"]
+texture = ExtResource("6_h2olg")

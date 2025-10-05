@@ -1,17 +1,17 @@
 extends Node
 
+enum Places {
+	LOUVRE,
+	ORSAY,
+	BIG_FOUNTAIN,
+	METRO,
+}
 enum Scenes {
 	TITLE,
 	INTRO,
 	PARIS_MAP,
 	PLACE,
 	OUTRO,
-}
-
-enum Places {
-	LOUVRE,
-	BIG_FOUNTAIN,
-	METRO,
 }
 
 const PLACE_ORDER = [Places.BIG_FOUNTAIN, Places.LOUVRE]

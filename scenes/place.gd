@@ -2,6 +2,7 @@ extends Node2D
 
 const LOUVRE: Resource = preload("uid://bw3hbaknbx1qh")
 const BIG_FOUNTAIN: Resource = preload("uid://cdnaw3bjl0cjj")
+const ORSAY: Resource = preload("uid://3vyk1kg265sn")
 
 @onready var current: Node = $Current
 @onready var place_name: Label = $Name
@@ -32,7 +33,7 @@ func move_right() -> void:
 
 func set_current_place(p: Util.Places) -> void:
 	Util.current_place = p
-	
+
 	for node in current.get_children():
 		node.queue_free()
 
@@ -53,6 +54,8 @@ func get_place_name(place: Util.Places) -> String:
 			return "Metro"
 		Util.Places.BIG_FOUNTAIN:
 			return "Place Joachim du Bellay"
+		Util.Places.ORSAY:
+			return "Orsay Museum"
 		_:
 			return "Unknown"
 
@@ -61,5 +64,7 @@ func get_scene(place: Util.Places) -> Resource:
 	match place:
 		Util.Places.BIG_FOUNTAIN:
 			return BIG_FOUNTAIN
+		Util.Places.ORSAY:
+			return ORSAY
 		_:
 			return LOUVRE
