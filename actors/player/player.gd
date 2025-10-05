@@ -3,6 +3,8 @@ extends Sprite2D
 
 
 func _process(delta: float) -> void:
+	if Util.dialog_shown: return
+	
 	var direction = Vector2.ZERO
 	if Input.is_action_pressed("right"):
 		direction += Vector2(1, 0)

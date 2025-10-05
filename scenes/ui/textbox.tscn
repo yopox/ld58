@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://d310o3x37bmjf"]
+
+[ext_resource type="Script" uid="uid://dwmjwx6to1ekd" path="res://scenes/ui/textbox.gd" id="1_1wp34"]
+[ext_resource type="Texture2D" uid="uid://bxklfg81e77o2" path="res://assets/ui/textbox.png" id="1_hfjk6"]
+[ext_resource type="Theme" uid="uid://1yl3fwpdo5qg" path="res://resources/embalm_bold.tres" id="2_cjlwn"]
+[ext_resource type="FontFile" uid="uid://bjcuklfgrs6lb" path="res://assets/fonts/chirp.ttf" id="3_1wp34"]
+
+[sub_resource type="Theme" id="Theme_gc5d4"]
+default_font = ExtResource("3_1wp34")
+
+[node name="Textbox" type="Node2D"]
+script = ExtResource("1_1wp34")
+
+[node name="Bubble" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(160, 48)
+offset_right = 160.0
+offset_bottom = 48.0
+texture = ExtResource("1_hfjk6")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Speaker" type="Label" parent="."]
+modulate = Color(0.2, 0.15686275, 1, 1)
+offset_left = 8.0
+offset_top = 1.0
+offset_right = 109.0
+offset_bottom = 24.0
+theme = ExtResource("2_cjlwn")
+text = "Rabelais"
+
+[node name="Text" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 19.0
+offset_right = 109.0
+offset_bottom = 42.0
+theme = SubResource("Theme_gc5d4")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -1
+text = "first line of text.
+second line of text!"

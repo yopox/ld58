@@ -5,11 +5,21 @@ const BIG_FOUNTAIN = preload("uid://cdnaw3bjl0cjj")
 
 @onready var current: Node = $Current
 @onready var place_name: Label = $Name
+@onready var place_name_2: Label = $NameShadow
 
 
 func _ready() -> void:
-	var place = get_scene(Util.current_place)
-	place_name.text = get_place_name(Util.current_place)
+	set_current_place(Util.current_place)
+
+
+func set_current_place(p: Util.Places) -> void:
+	for node in current.get_children():
+		node.queue_free()
+		
+	var place = get_scene(p)
+	var pn = get_place_name(p)
+	place_name.text = pn
+	place_name_2.text = pn
 	current.add_child(place.instantiate())
 
 

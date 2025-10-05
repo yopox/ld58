@@ -13,6 +13,6 @@ texture = ExtResource("2_v045g")
 centered = false
 
 [node name="Test" parent="." instance=ExtResource("2_xbybe")]
-position = Vector2(254, 149)
+position = Vector2(138, 145)
 
 [connection signal="interact" from="Test" to="." method="_on_test_interact"]
