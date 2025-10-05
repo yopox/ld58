@@ -7,7 +7,7 @@ extends Location
 @onready var light_5: PointLight2D = $Light5
 
 
-var lights = [false, true, false, true, false]
+var lights = [false, false, false, false, false]
 
 
 func _ready() -> void:
@@ -19,15 +19,15 @@ func _on_statue_1_interact() -> void:
 
 
 func _on_statue_2_interact() -> void:
-	inverse([0, 2, 4])
+	inverse([0, 1, 3])
 
 
 func _on_statue_3_interact() -> void:
-	inverse([1])
+	inverse([1, 2, 4])
 
 
 func _on_statue_4_interact() -> void:
-	inverse([0, 1, 2])
+	inverse([0, 2, 4])
 
 
 func inverse(indices: Array[int]) -> void:
