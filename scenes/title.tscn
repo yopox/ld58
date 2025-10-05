@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://vuuh8jo82i3"]
+
+[ext_resource type="Texture2D" uid="uid://bh2cb4srswd8c" path="res://assets/backgrounds/menu.png" id="1_4ignj"]
+[ext_resource type="Script" uid="uid://b2wdiiavq2pd" path="res://scenes/title.gd" id="1_b3w7a"]
+[ext_resource type="Script" uid="uid://dg0a5tdiyfskh" path="res://scenes/oscillator.gd" id="2_pyl7j"]
+[ext_resource type="Theme" uid="uid://1yl3fwpdo5qg" path="res://resources/embalm_bold.tres" id="2_wosw1"]
+[ext_resource type="Theme" uid="uid://6jh00vt4fput" path="res://resources/embalm.tres" id="3_p6dhs"]
+
+[node name="Title" type="Node2D"]
+script = ExtResource("1_b3w7a")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_4ignj")
+centered = false
+
+[node name="Title" type="Label" parent="."]
+custom_minimum_size = Vector2(320, 0)
+offset_top = 50.0
+offset_right = 320.0
+offset_bottom = 88.0
+theme = ExtResource("2_wosw1")
+theme_override_font_sizes/font_size = 32
+text = "Paris"
+horizontal_alignment = 1
+
+[node name="Oscillator" type="Node" parent="Title"]
+script = ExtResource("2_pyl7j")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(320, 0)
+offset_top = 107.0
+offset_right = 320.0
+offset_bottom = 130.0
+theme = ExtResource("3_p6dhs")
+text = "press space"
+horizontal_alignment = 1

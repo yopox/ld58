@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c20p8uid5qfsa"]
+
+[ext_resource type="Script" uid="uid://dewgxenckssve" path="res://scenes/place.gd" id="1_wi51d"]
+[ext_resource type="Theme" uid="uid://1yl3fwpdo5qg" path="res://resources/embalm_bold.tres" id="2_5c4eq"]
+[ext_resource type="PackedScene" uid="uid://tbil5pu2sjdx" path="res://actors/player/player.tscn" id="3_5ow0v"]
+
+[node name="Place" type="Node2D"]
+script = ExtResource("1_wi51d")
+
+[node name="Current" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("3_5ow0v")]
+position = Vector2(24, 152)
+
+[node name="Name" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 105.0
+offset_bottom = 35.0
+theme = ExtResource("2_5c4eq")
+text = "Place name"

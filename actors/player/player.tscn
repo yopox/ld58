@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://tbil5pu2sjdx"]
+
+[ext_resource type="Texture2D" uid="uid://c0jidic7mns7u" path="res://assets/characters/ducky.png" id="1_nvxhs"]
+[ext_resource type="Script" uid="uid://dmxv3dsfkceeh" path="res://actors/player/player.gd" id="2_ilk7j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx3fn"]
+atlas = ExtResource("1_nvxhs")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilk7j"]
+size = Vector2(32, 24)
+
+[node name="Player" type="Sprite2D"]
+texture = SubResource("AtlasTexture_bx3fn")
+hframes = 6
+vframes = 2
+script = ExtResource("2_ilk7j")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_ilk7j")

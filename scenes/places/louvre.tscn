@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw3hbaknbx1qh"]
+
+[ext_resource type="Texture2D" uid="uid://dt8o1ek3q6jr5" path="res://assets/backgrounds/louvre.png" id="1_52k8e"]
+[ext_resource type="Script" uid="uid://xq8bd1q8tp6m" path="res://scenes/places/louvre.gd" id="1_v045g"]
+[ext_resource type="PackedScene" uid="uid://b3tr6v6qcve3q" path="res://actors/actor.tscn" id="2_xbybe"]
+
+[node name="Louvre" type="Node2D"]
+script = ExtResource("1_v045g")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_52k8e")
+centered = false
+
+[node name="Test" parent="." instance=ExtResource("2_xbybe")]
+position = Vector2(215, 140)
+
+[connection signal="interact" from="Test" to="." method="_on_test_interact"]
