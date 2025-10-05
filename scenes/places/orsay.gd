@@ -26,9 +26,9 @@ func _ready() -> void:
 	await Util.show_dialog(
 		"Cap Manager",
 		"""
-		This is a top priority mission.
-		An attack is being planned.
-		We forgot about it but I guess we still have time!
+		This is a top priority mission. An attack
+		is being planned. We forgot about it but I
+		guess we still have time!
 		""",
 		dialog_position.global_position
 	)
@@ -40,7 +40,8 @@ func _ready() -> void:
 	await Util.show_dialog(
 		"Cap Manager",
 		"""
-		Bertrand? Are you still there? What happened?
+		Bertrand? Are you still there? What
+		happened?
 		""",
 		dialog_position.global_position
 	)
