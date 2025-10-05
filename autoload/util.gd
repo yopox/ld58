@@ -14,7 +14,7 @@ enum Scenes {
 	OUTRO,
 }
 
-const PLACE_ORDER = [Places.BIG_FOUNTAIN, Places.LOUVRE]
+const PLACE_ORDER = [Places.BIG_FOUNTAIN, Places.LOUVRE, Places.ORSAY]
 
 var current_place: Places = Places.BIG_FOUNTAIN
 var dialog_shown: bool = false
