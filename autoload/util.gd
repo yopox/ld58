@@ -10,10 +10,11 @@ enum Scenes {
 
 enum Places {
 	LOUVRE,
+	BIG_FOUNTAIN,
 	METRO,
 }
 
-var current_place: Places = Places.LOUVRE
+var current_place: Places = Places.BIG_FOUNTAIN
 
 
 func wait(amount: float):

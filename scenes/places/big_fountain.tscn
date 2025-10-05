@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdnaw3bjl0cjj"]
+
+[ext_resource type="Script" uid="uid://bdgrksmd8jalm" path="res://scenes/places/big_fountain.gd" id="1_y0qkc"]
+[ext_resource type="Texture2D" uid="uid://cpbppjfh0b8y4" path="res://assets/backgrounds/truc.png" id="1_yot7t"]
+[ext_resource type="PackedScene" uid="uid://b3tr6v6qcve3q" path="res://actors/actor.tscn" id="2_y0qkc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yot7t"]
+size = Vector2(24, 49)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_y0qkc"]
+
+[node name="BigFountain" type="Node2D"]
+script = ExtResource("1_y0qkc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(160, 90)
+texture = ExtResource("1_yot7t")
+metadata/_edit_lock_ = true
+
+[node name="Delivery Guy" parent="." instance=ExtResource("2_y0qkc")]
+position = Vector2(135, 132)
+texture = null
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="Delivery Guy/Hitbox" index="0"]
+position = Vector2(0, 17)
+shape = SubResource("RectangleShape2D_yot7t")
+
+[node name="Romantic Couple" parent="." instance=ExtResource("2_y0qkc")]
+position = Vector2(47, 132)
+texture = null
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="Romantic Couple/Hitbox" index="0"]
+position = Vector2(-4, 18)
+shape = SubResource("RectangleShape2D_yot7t")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(78, 9)
+energy = 8.74
+texture = SubResource("PlaceholderTexture2D_y0qkc")
+
+[connection signal="interact" from="Delivery Guy" to="." method="_on_delivery_guy_interact"]
+[connection signal="interact" from="Romantic Couple" to="." method="_on_romantic_couple_interact"]
+
+[editable path="Delivery Guy"]
+[editable path="Romantic Couple"]
