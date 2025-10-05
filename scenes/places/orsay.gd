@@ -18,11 +18,33 @@ var velocities: Array[Vector2] = []
 	$EiffelTower/Part4,
 ]
 @onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
+@onready var dialog_position: Node2D = $Node/DialogPosition
 
 
 func _ready() -> void:
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1).timeout
+	await Util.show_dialog(
+		"Cap Manager",
+		"""
+		This is a top priority mission.
+		An attack is being planned.
+		We forgot about it but I guess we still have time!
+		""",
+		dialog_position.global_position
+	)
+	await get_tree().create_timer(0.5).timeout
+
 	trigger_explosion()
+	await get_tree().create_timer(1).timeout
+
+	await Util.show_dialog(
+		"Cap Manager",
+		"""
+		Bertrand? Are you still there? What happened?
+		""",
+		dialog_position.global_position
+	)
+	Log.info("finished")
 
 
 func trigger_explosion() -> void:

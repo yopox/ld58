@@ -19,7 +19,7 @@ enum Scenes {
 
 var places = Places.values()
 
-var current_place: Places = Places.BIG_FOUNTAIN
+var current_place: Places = Places.ORSAY
 var dialog_shown: bool = false
 
 
