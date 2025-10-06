@@ -29,10 +29,10 @@ metadata/_edit_lock_ = true
 position = Vector2(0, 6)
 
 [node name="Left" type="Node2D" parent="Warps"]
-position = Vector2(0, 160)
+position = Vector2(0, 159)
 
 [node name="Right" type="Node2D" parent="Warps"]
-position = Vector2(320, 160)
+position = Vector2(320, 159)
 
 [node name="Sphinx" parent="." instance=ExtResource("4_ux7b8")]
 position = Vector2(135, 159)
