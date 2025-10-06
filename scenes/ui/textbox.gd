@@ -105,6 +105,9 @@ func init_dialog(dialog: String):
 
 
 func show_dialog(speaker_name: String, dialog: String, p: Vector2) -> void:
+	animation_player.stop()
+	color_rect.visible = false
+	
 	init_dialog(dialog)
 	await appear(p, speaker_name)
 
@@ -127,10 +130,12 @@ func show_persist(dialog: String) -> void:
 	
 	Signals.stop_talking.emit()
 	Signals.dialog_over.emit()
-	
+
+
 func stop_talk_animation() -> void:
 	animation_player.play("blink")
-	
+
+
 func start_talk_animation() -> void:
 	animation_player.stop()
 	color_rect.visible = false

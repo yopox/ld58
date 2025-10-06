@@ -4,22 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bxklfg81e77o2" path="res://assets/ui/textbox.png" id="1_hfjk6"]
 [ext_resource type="Theme" uid="uid://ujg1ky4s1f6q" path="res://resources/m3x6.tres" id="3_cjlwn"]
 
-[sub_resource type="Animation" id="Animation_cjlwn"]
-resource_name = "blink"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
 [sub_resource type="Animation" id="Animation_1wp34"]
 length = 0.001
 tracks/0/type = "value"
@@ -33,6 +17,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_cjlwn"]
+resource_name = "blink"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gc5d4"]
