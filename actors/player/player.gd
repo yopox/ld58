@@ -73,4 +73,3 @@ func update_perspective_scale() -> void:
 
 	# Évite les sous-pixels
 	sprite.position = sprite.position.round()
-

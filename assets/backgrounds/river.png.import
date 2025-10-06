@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2jqjuvq7ognx"
-path="res://.godot/imported/fountain.jpg-1973d56fa4864fd6ea877e32a075c0d7.ctex"
+uid="uid://b0ig0q07mn4gp"
+path="res://.godot/imported/river.png-4a44403fbb8c6fa8d82557bcef8a9218.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/fountain.jpg"
-dest_files=["res://.godot/imported/fountain.jpg-1973d56fa4864fd6ea877e32a075c0d7.ctex"]
+source_file="res://assets/backgrounds/river.png"
+dest_files=["res://.godot/imported/river.png-4a44403fbb8c6fa8d82557bcef8a9218.ctex"]
 
 [params]
 

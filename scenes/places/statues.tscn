@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dcunsckap4hy7"]
 
 [ext_resource type="Script" uid="uid://bnvqlbgdyiqnj" path="res://scenes/places/statues.gd" id="1_8uw8k"]
-[ext_resource type="Texture2D" uid="uid://emwbqevkbcn5" path="res://assets/backgrounds/statues.jpg" id="2_tts8o"]
+[ext_resource type="Texture2D" uid="uid://cg83qr2lyar6h" path="res://assets/backgrounds/statues.png" id="2_8uw8k"]
 [ext_resource type="PackedScene" uid="uid://b3tr6v6qcve3q" path="res://actors/actor.tscn" id="3_8uw8k"]
 
 [sub_resource type="Gradient" id="Gradient_8uw8k"]
@@ -67,7 +67,7 @@ metadata/_custom_type_script = "uid://cb27baxetpcfl"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -15)
-texture = ExtResource("2_tts8o")
+texture = ExtResource("2_8uw8k")
 centered = false
 
 [node name="Warps" type="Node2D" parent="."]

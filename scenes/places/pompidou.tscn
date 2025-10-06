@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjk40iqthhx31"]
 
 [ext_resource type="Script" uid="uid://cb27baxetpcfl" path="res://scenes/places/location.gd" id="1_lfgka"]
-[ext_resource type="Texture2D" uid="uid://bvwseptf0e47d" path="res://assets/backgrounds/pompidou.jpg" id="2_cov1t"]
+[ext_resource type="Texture2D" uid="uid://cukuqbp0ctqp4" path="res://assets/backgrounds/pompidou.png" id="2_esm5d"]
 [ext_resource type="PackedScene" uid="uid://b3tr6v6qcve3q" path="res://actors/actor.tscn" id="3_esm5d"]
 [ext_resource type="Texture2D" uid="uid://cp15asmyusbwi" path="res://assets/characters/phryge.png" id="4_cntf7"]
 
@@ -12,7 +12,7 @@ right = NodePath("Warps/Right")
 metadata/_custom_type_script = "uid://cb27baxetpcfl"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_cov1t")
+texture = ExtResource("2_esm5d")
 centered = false
 
 [node name="Warps" type="Node2D" parent="."]

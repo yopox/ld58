@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jcrntsjch1h2"
-path="res://.godot/imported/waves.jpg-fb92eba1102099a931830e720a1fafd6.ctex"
+uid="uid://dnbc8cwdk5q8i"
+path="res://.godot/imported/chatelet.png-4eda4094dfeff3dc45f96416124621ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/waves.jpg"
-dest_files=["res://.godot/imported/waves.jpg-fb92eba1102099a931830e720a1fafd6.ctex"]
+source_file="res://assets/backgrounds/chatelet.png"
+dest_files=["res://.godot/imported/chatelet.png-4eda4094dfeff3dc45f96416124621ae.ctex"]
 
 [params]
 

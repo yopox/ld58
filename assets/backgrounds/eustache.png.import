@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://corfkk23pk3yj"
-path="res://.godot/imported/river.jpg-ae20d4146d56446603d35b1de6e10c6b.ctex"
+uid="uid://b0mxk7085t4f3"
+path="res://.godot/imported/eustache.png-5e5c7ee4ab686dc070598d33ab8b7ede.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/river.jpg"
-dest_files=["res://.godot/imported/river.jpg-ae20d4146d56446603d35b1de6e10c6b.ctex"]
+source_file="res://assets/backgrounds/eustache.png"
+dest_files=["res://.godot/imported/eustache.png-5e5c7ee4ab686dc070598d33ab8b7ede.ctex"]
 
 [params]
 

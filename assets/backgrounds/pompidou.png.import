@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brtxur2j3ii67"
-path="res://.godot/imported/eustache.jpg-47e664d34acf1e199844820583282dc8.ctex"
+uid="uid://cukuqbp0ctqp4"
+path="res://.godot/imported/pompidou.png-42c5b73d26bf39d6d7db876d52ce9eaf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/eustache.jpg"
-dest_files=["res://.godot/imported/eustache.jpg-47e664d34acf1e199844820583282dc8.ctex"]
+source_file="res://assets/backgrounds/pompidou.png"
+dest_files=["res://.godot/imported/pompidou.png-42c5b73d26bf39d6d7db876d52ce9eaf.ctex"]
 
 [params]
 

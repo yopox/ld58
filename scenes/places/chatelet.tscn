@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://v008qkdot8fp"]
 
 [ext_resource type="Script" uid="uid://cb27baxetpcfl" path="res://scenes/places/location.gd" id="1_rtyuw"]
-[ext_resource type="Texture2D" uid="uid://dqbto7qw22xj1" path="res://assets/backgrounds/chatelet.jpg" id="2_x22jd"]
+[ext_resource type="Texture2D" uid="uid://dnbc8cwdk5q8i" path="res://assets/backgrounds/chatelet.png" id="2_x22jd"]
 
 [node name="Chatelet" type="Node2D" node_paths=PackedStringArray("left", "right")]
 script = ExtResource("1_rtyuw")

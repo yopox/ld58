@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qmhe3hdrs0v5"
-path="res://.godot/imported/louvre.jpg-038b2f8afa9fa21b7ab5f28e55f159a5.ctex"
+uid="uid://b3l5sq5nr2ddw"
+path="res://.godot/imported/waves.png-137160380d96a6f875e0ed68de267aa0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/louvre.jpg"
-dest_files=["res://.godot/imported/louvre.jpg-038b2f8afa9fa21b7ab5f28e55f159a5.ctex"]
+source_file="res://assets/backgrounds/waves.png"
+dest_files=["res://.godot/imported/waves.png-137160380d96a6f875e0ed68de267aa0.ctex"]
 
 [params]
 
