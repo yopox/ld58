@@ -4,14 +4,7 @@ extends Location
 @onready var eiffel_piece: Sprite2D = $EiffelPiece
 @onready var delivery_guy: Actor = $"Delivery Guy"
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+var delivery_talked: bool = false
 
 
 func _on_romantic_couple_interact() -> void:
@@ -41,10 +34,20 @@ func _on_romantic_couple_interact() -> void:
 		)
 
 func _on_delivery_guy_interact() -> void:
-	await Util.show_dialog(
-		"Delivery biker",
-		"""
-		...
-		""",
-		delivery_guy.global_position,
-	)
+	if not delivery_talked:
+		await Util.show_dialog(
+			"Delivery biker",
+			"""
+			...
+			""",
+			delivery_guy.global_position,
+		)
+		delivery_talked = true
+	else:
+		await Util.show_dialog(
+			"Delivery biker",
+			"""
+			Sorry, je ne parle pas anglais.
+			""",
+			delivery_guy.global_position,
+		)
