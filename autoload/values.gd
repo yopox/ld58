@@ -23,11 +23,10 @@ const INTRO_HAND_APPEAR: float = 0.35
 const HAND_SPEED: float = 50.0
 
 # — PLACES —
-const WALKABLE_Y: float = SCREEN_H * 0.4
 const CHATELET_RIDDLE_SOLVED_DELAY: float = 0.5
 
 # — PLAYER —
-const PLAYER_SPEED: float = 80.0
+const PLAYER_SPEED: float = 100.0
 
 # — ACHIEVEMENT —
 const ACHIEVEMENT_TITLE: String = "Eiffel Tower Piece Collected!"
