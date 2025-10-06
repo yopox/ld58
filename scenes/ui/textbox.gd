@@ -57,8 +57,10 @@ func consume_char() -> void:
 				if text.text != "":
 					line += 1
 					if line % 3 == 0:
-						await Signals.confirm
-						text.text = ""
+						if not Util.textbox_auto_next:
+							await Signals.confirm
+						if remaining.length() > 1:
+							text.text = ""
 					else:
 						text.text += "\n"
 			_:

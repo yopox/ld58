@@ -11,30 +11,34 @@
 script = ExtResource("1_yjqpq")
 
 [node name="Map" type="Node2D" parent="."]
-position = Vector2(57, 0)
+position = Vector2(112, 24)
 
 [node name="Map1" type="Sprite2D" parent="Map"]
-position = Vector2(154, 70)
 texture = ExtResource("2_4bx60")
+centered = false
 
 [node name="Map2" type="Sprite2D" parent="Map"]
-position = Vector2(307, 70)
+position = Vector2(153, 0)
 texture = ExtResource("2_4bx60")
+centered = false
 
 [node name="Map3" type="Sprite2D" parent="Map"]
-position = Vector2(154, 146)
+position = Vector2(0, 76)
 texture = ExtResource("2_4bx60")
+centered = false
 
 [node name="Map4" type="Sprite2D" parent="Map"]
-position = Vector2(307, 146)
+position = Vector2(153, 76)
 texture = ExtResource("2_4bx60")
+centered = false
 
 [node name="bg" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 57.0
-offset_right = 97.0
-offset_bottom = 40.0
+offset_left = 34.0
+offset_top = -8.0
+offset_right = 74.0
+offset_bottom = 32.0
 
 [node name="ColorRect" type="ColorRect" parent="bg"]
 custom_minimum_size = Vector2(640, 180)
@@ -78,6 +82,30 @@ position = Vector2(219, 61)
 texture = ExtResource("3_wfs7u")
 offset = Vector2(1, -5)
 
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(87, 88)
+
+[node name="Manager" type="Node2D" parent="."]
+position = Vector2(72, 64)
+
+[node name="Border" type="ColorRect" parent="Manager"]
+offset_left = -16.0
+offset_top = -26.0
+offset_right = 16.0
+offset_bottom = 25.0
+
+[node name="Background" type="ColorRect" parent="Manager"]
+offset_left = -15.0
+offset_top = -25.0
+offset_right = 15.0
+offset_bottom = 24.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite" parent="Manager" instance=ExtResource("6_es01l")]
+
+[node name="DialogPosition" type="Node2D" parent="Manager"]
+position = Vector2(-118, 76)
+
 [node name="Hand" type="Sprite2D" parent="."]
 position = Vector2(208, 192)
 texture = ExtResource("4_i2l1n")
@@ -86,24 +114,3 @@ offset = Vector2(-5, 0)
 
 [node name="Textbox" parent="." instance=ExtResource("1_ioskq")]
 position = Vector2(70, 120)
-
-[node name="Node" type="Node2D" parent="."]
-position = Vector2(96, 72)
-
-[node name="Border" type="ColorRect" parent="Node"]
-offset_left = -16.0
-offset_top = -26.0
-offset_right = 16.0
-offset_bottom = 25.0
-
-[node name="Background" type="ColorRect" parent="Node"]
-offset_left = -15.0
-offset_top = -25.0
-offset_right = 15.0
-offset_bottom = 24.0
-color = Color(0, 0, 0, 1)
-
-[node name="Manager" parent="Node" instance=ExtResource("6_es01l")]
-
-[node name="DialogPosition" type="Node2D" parent="Node"]
-position = Vector2(-118, 76)

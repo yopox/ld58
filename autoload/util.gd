@@ -24,6 +24,7 @@ const BOSS_NAME: String = "Cap Manager"
 
 var dialog_shown: bool = false
 var cutscene_playing: bool = false
+var textbox_auto_next: bool = false
 
 
 func show_dialog(speaker_name: String, text: String, position: Vector2) -> void:
