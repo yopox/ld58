@@ -10,7 +10,7 @@ const TEXTBOX_APPEAR_DELAY: float = 0.2
 const TEXTBOX_APPEAR_DY: float = 4.0
 const TEXTBOX_OFFSET: Vector2 = Vector2(-TEXTBOX_W / 2.0, -TEXTBOX_H - 24)
 const TEXTBOX_MIN_X: float = 24.0
-const TEXTBOX_CHAR_FRAMES: int = 4
+const TEXTBOX_CHAR_FRAMES: int = 1
 
 const LOCATION_TITLE_DISAPPEAR_DELAY: float = 2.0
 const LOCATION_TITLE_DISAPPEAR_DURATION: float = 0.5

@@ -8,6 +8,7 @@ enum Places {
 	LOUVRE,
 	STATUES,
 	ORSAY,
+	METRO,
 }
 enum Scenes {
 	TITLE,

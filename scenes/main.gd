@@ -37,3 +37,7 @@ func get_scene(s: Util.Scenes) -> Resource:
 			return PLACE
 		_:
 			return TITLE
+
+
+func _on_exit_pressed() -> void:
+	get_tree().quit()

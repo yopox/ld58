@@ -7,6 +7,7 @@ const CHATELET: Resource = preload("uid://v008qkdot8fp")
 const EUSTACHE: Resource = preload("uid://bsx26338og6x2")
 const POMPIDOU: Resource = preload("uid://bjk40iqthhx31")
 const STATUES: Resource = preload("uid://dcunsckap4hy7")
+const METRO: Resource = preload("uid://dcl53jv2pulnk")
 
 @onready var current: Node = $Current
 @onready var place_name: Control = $NameContainer
@@ -85,6 +86,8 @@ func get_place_name(place: Util.Places) -> String:
 			return "Louvre Museum Statues"
 		Util.Places.POMPIDOU:
 			return "Pompidou Museum"
+		Util.Places.METRO:
+			return "MRT"
 		_:
 			return "Unknown"
 
@@ -97,4 +100,13 @@ func get_scene(place: Util.Places) -> Resource:
 		Util.Places.EUSTACHE: return EUSTACHE
 		Util.Places.STATUES: return STATUES
 		Util.Places.CHATELET: return CHATELET
+		Util.Places.METRO: return METRO
 		_: return LOUVRE
+
+
+func _on_exit_pressed() -> void:
+	get_tree().quit()
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
