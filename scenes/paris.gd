@@ -15,18 +15,18 @@ func _ready() -> void:
 	var x_total = Util.Places.values().size() * item_x
 	var x_margin = (Values.SCREEN_W - x_total) / 2.0
 	for place in Util.Places.values():
-		var station: Sprite2D = Sprite2D.new()
+		var s: Sprite2D = Sprite2D.new()
 		var s_x = x_margin + item_x * place_n + 8
-		station.position.x = s_x
+		s.position.x = s_x
 		x_pos.append(s_x)
-		station.position.y = 136
-		station.z_index = 10
+		s.position.y = 136
+		s.z_index = 10
 		
 		var atlas: AtlasTexture = AtlasTexture.new()
 		atlas.atlas = STATION
 		atlas.region.size.x = 16
 		atlas.region.size.y = 16
-		station.texture = atlas
+		s.texture = atlas
 		
 		var piece = Progress.piece_for(place)
 		if piece == null:
@@ -36,7 +36,7 @@ func _ready() -> void:
 		else:
 			atlas.region.position.x = 16
 		
-		add_child(station)
+		add_child(s)
 		
 		if place_n > 0:
 			var rect = ColorRect.new()

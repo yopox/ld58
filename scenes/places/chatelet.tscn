@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://v008qkdot8fp"]
+[gd_scene load_steps=4 format=3 uid="uid://v008qkdot8fp"]
 
 [ext_resource type="Script" uid="uid://cb27baxetpcfl" path="res://scenes/places/location.gd" id="1_rtyuw"]
 [ext_resource type="Texture2D" uid="uid://dnbc8cwdk5q8i" path="res://assets/backgrounds/chatelet.png" id="2_x22jd"]
+[ext_resource type="Texture2D" uid="uid://cjq4h27fp2vd" path="res://assets/backgrounds/chatelet_foreground.png" id="3_q07y4"]
 
 [node name="Chatelet" type="Node2D" node_paths=PackedStringArray("left", "right")]
 script = ExtResource("1_rtyuw")
@@ -9,10 +10,18 @@ left = NodePath("Warps/Left")
 right = NodePath("Warps/Right")
 metadata/_custom_type_script = "uid://cb27baxetpcfl"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Foreground" type="Sprite2D" parent="."]
+z_index = 110
+position = Vector2(0, -12)
+texture = ExtResource("3_q07y4")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Background" type="Sprite2D" parent="."]
 position = Vector2(0, -12)
 texture = ExtResource("2_x22jd")
 centered = false
+metadata/_edit_lock_ = true
 
 [node name="Warps" type="Node2D" parent="."]
 position = Vector2(0, 6)

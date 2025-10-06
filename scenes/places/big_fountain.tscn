@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdnaw3bjl0cjj"]
+[gd_scene load_steps=7 format=3 uid="uid://cdnaw3bjl0cjj"]
 
 [ext_resource type="Script" uid="uid://bdgrksmd8jalm" path="res://scenes/places/big_fountain.gd" id="1_y0qkc"]
 [ext_resource type="Texture2D" uid="uid://cpbppjfh0b8y4" path="res://assets/backgrounds/truc.png" id="1_yot7t"]
 [ext_resource type="PackedScene" uid="uid://b3tr6v6qcve3q" path="res://actors/actor.tscn" id="2_y0qkc"]
+[ext_resource type="Texture2D" uid="uid://dacqkgjkwvva4" path="res://assets/backgrounds/fountain_foreground.png" id="3_1wpny"]
 [ext_resource type="PackedScene" uid="uid://ct73006nbve56" path="res://actors/eiffel_piece.tscn" id="4_agfl6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yot7t"]
@@ -13,9 +14,15 @@ script = ExtResource("1_y0qkc")
 left = NodePath("Warps/Left")
 right = NodePath("Warps/Right")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 position = Vector2(160, 90)
 texture = ExtResource("1_yot7t")
+metadata/_edit_lock_ = true
+
+[node name="Foreground" type="Sprite2D" parent="."]
+z_index = 110
+texture = ExtResource("3_1wpny")
+centered = false
 metadata/_edit_lock_ = true
 
 [node name="Delivery Guy" parent="." instance=ExtResource("2_y0qkc")]
@@ -46,10 +53,14 @@ position = Vector2(0, 160)
 position = Vector2(320, 160)
 
 [node name="EiffelPiece" parent="." instance=ExtResource("4_agfl6")]
-position = Vector2(-15, 121)
+position = Vector2(44, 200)
+
+[node name="CPUParticles2D" parent="EiffelPiece" index="0"]
+lifetime = 1.0
 
 [connection signal="interact" from="Delivery Guy" to="." method="_on_delivery_guy_interact"]
 [connection signal="interact" from="Romantic Couple" to="." method="_on_romantic_couple_interact"]
 
 [editable path="Delivery Guy"]
 [editable path="Romantic Couple"]
+[editable path="EiffelPiece"]
