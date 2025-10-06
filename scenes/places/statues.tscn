@@ -139,7 +139,7 @@ range_z_max = 500
 texture = SubResource("GradientTexture2D_663r4")
 
 [node name="EiffelPiece" parent="." instance=ExtResource("4_0berv")]
-position = Vector2(150, 26)
+position = Vector2(208, 26)
 
 [connection signal="interact" from="Statue1" to="." method="_on_statue_1_interact"]
 [connection signal="interact" from="Statue2" to="." method="_on_statue_2_interact"]
