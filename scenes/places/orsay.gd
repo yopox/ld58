@@ -49,7 +49,7 @@ func play_intro() -> void:
 	await Util.show_dialog(
 		Util.BOSS_NAME,
 		"""
-		Bertrand, are you on the field?
+		Agent B, are you on the field?
 		With this bread costume you should
 		be incognito around here.
 		This is a top priority mission. An attack
@@ -67,7 +67,7 @@ func play_intro() -> void:
 	await Util.show_dialog(
 		Util.BOSS_NAME,
 		"""
-		Bertrand?$
+		Agent B?$
 		Are you still there?$
 		What happened?
 		""",
@@ -85,7 +85,7 @@ func play_outro() -> void:
 	await Util.show_dialog(
 		Util.BOSS_NAME,
 		"""
-		Bertrand, we made it! Let's rebuild the
+		Agent B, we made it! Let's rebuild the
 		tower now. The tower-repairing duct tape
 		in your gadgets should help.
 		""",
@@ -100,13 +100,14 @@ func play_outro() -> void:
 	await Util.show_dialog(
 		Util.BOSS_NAME,
 		"""
-		Amazing! With your quality work no one
-		will notice it was a ever damaged!/
-		This was the last mission we had in
-		store, so you will no longer working with
-		us./
-		Thank you for your service!$
-		It was a pleasure to be your Cap-tain!
+		Amazing! With your quality work, no one
+		will notice it was ever damaged!/
+		You worked well, Agent B.
+		You are our best agent, after all./
+		It is time for you to take some
+		vacations in Paris./
+		It was a pleasure being your Cap-tain
+		on this mission!
 		""",
 		dialog_position.global_position - textbox_offset
 	)

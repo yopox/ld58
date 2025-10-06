@@ -26,6 +26,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if state != State.SELECT_LOCATION: return
+	if Util.dialog_shown: return
 	
 	var dir = Vector2.ZERO
 	if Input.is_action_pressed("right"):
@@ -84,16 +85,14 @@ func play_intro() -> void:
 	await Util.show_textbox(TEXTBOX_POS, Util.BOSS_NAME)
 	await Util.show_dialog_persist(
 		"""
-		Hello agent!
+		Hello Agent B!
 		Ready for your next mission?/
 		We have a few destinations available,
 		please point where you want to go.
 		"""
 	)
 	
-	await Util.wait(0.5)
-	
-	var hand_pos = Vector2(208, 80)
+	var hand_pos = Vector2(184, 64)
 	var t1 = get_tree().create_tween()
 	t1.set_trans(Tween.TRANS_QUAD)
 	t1.tween_property(hand, "global_position", hand_pos, Values.INTRO_HAND_APPEAR)
@@ -115,8 +114,8 @@ func play_intro() -> void:
 	
 	await Util.show_dialog_persist(
 		"""
-		Ok, I guess you're really into Paris,
-		see you on the field!
+		Ok, I guess you're really into Paris!/
+		Wait for my call on the field ;)
 		"""
 	) 
 	await Signals.confirm

@@ -37,8 +37,10 @@ func show_dialog(speaker_name: String, text: String, position: Vector2) -> void:
 
 
 func show_dialog_persist(text: String) -> void:
+	dialog_shown = true
 	Signals.show_dialog_persist.emit(text)
 	await Signals.dialog_over
+	dialog_shown = false
 
 
 func show_textbox(position: Vector2, speaker_name: String) -> void:
