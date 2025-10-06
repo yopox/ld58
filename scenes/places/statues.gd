@@ -6,6 +6,7 @@ extends Location
 @onready var light_4: PointLight2D = $Light4
 @onready var light_5: PointLight2D = $Light5
 
+@onready var eiffel_piece: Sprite2D = $EiffelPiece
 
 var lights = [false, false, false, false, false]
 

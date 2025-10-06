@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://pv25ptrhwatc"]
+
+[ext_resource type="Shader" uid="uid://w8th6km5omp4" path="res://resources/circle_shader.gdshader" id="1_120ss"]
+[ext_resource type="Script" uid="uid://hpplhj8sqosp" path="res://scenes/ui/achievement.gd" id="1_b6oxt"]
+[ext_resource type="Theme" uid="uid://1yl3fwpdo5qg" path="res://resources/embalm_bold.tres" id="2_5jp8t"]
+[ext_resource type="Theme" uid="uid://ujg1ky4s1f6q" path="res://resources/m3x6.tres" id="3_hdufb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rjk60"]
+shader = ExtResource("1_120ss")
+shader_parameter/circle_size = 1.10000002384186
+shader_parameter/ratio_width = 320.0
+shader_parameter/ratio_height = 180.0
+
+[node name="Achievement" type="Control"]
+z_index = 1000
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_b6oxt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_rjk60")
+custom_minimum_size = Vector2(320, 180)
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0.12156863, 0.0627451, 0.16470589, 1)
+
+[node name="Title" type="Label" parent="."]
+z_index = 1
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 0
+offset_top = 40.0
+offset_right = 320.0
+offset_bottom = 59.0
+theme = ExtResource("2_5jp8t")
+text = "Piece Collected!"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="."]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 0
+offset_top = 117.0
+offset_right = 320.0
+offset_bottom = 140.0
+theme = ExtResource("3_hdufb")
+text = "3 to go."
+horizontal_alignment = 1

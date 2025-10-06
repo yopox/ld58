@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dcunsckap4hy7"]
+[gd_scene load_steps=15 format=3 uid="uid://dcunsckap4hy7"]
 
 [ext_resource type="Script" uid="uid://bnvqlbgdyiqnj" path="res://scenes/places/statues.gd" id="1_8uw8k"]
 [ext_resource type="Texture2D" uid="uid://cg83qr2lyar6h" path="res://assets/backgrounds/statues.png" id="2_8uw8k"]
 [ext_resource type="PackedScene" uid="uid://b3tr6v6qcve3q" path="res://actors/actor.tscn" id="3_8uw8k"]
+[ext_resource type="PackedScene" uid="uid://ct73006nbve56" path="res://actors/eiffel_piece.tscn" id="4_0berv"]
 
 [sub_resource type="Gradient" id="Gradient_8uw8k"]
 offsets = PackedFloat32Array(0.005988024, 0.76047903)
@@ -105,27 +106,40 @@ position = Vector2(4, -45)
 [node name="Light1" type="PointLight2D" parent="."]
 position = Vector2(31, 63)
 energy = 2.0
+range_z_min = -1
+range_z_max = 500
 texture = SubResource("GradientTexture2D_0berv")
 
 [node name="Light2" type="PointLight2D" parent="."]
 position = Vector2(97, 64)
 energy = 2.0
+range_z_min = -1
+range_z_max = 500
 texture = SubResource("GradientTexture2D_c4dnu")
 
 [node name="Light3" type="PointLight2D" parent="."]
 position = Vector2(161, 65)
 energy = 2.0
+range_z_min = -1
+range_z_max = 500
 texture = SubResource("GradientTexture2D_5mf0b")
 
 [node name="Light4" type="PointLight2D" parent="."]
 position = Vector2(225, 66)
 energy = 2.0
+range_z_min = -1
+range_z_max = 500
 texture = SubResource("GradientTexture2D_lcamn")
 
 [node name="Light5" type="PointLight2D" parent="."]
 position = Vector2(290, 66)
 energy = 2.0
+range_z_min = -1
+range_z_max = 500
 texture = SubResource("GradientTexture2D_663r4")
+
+[node name="EiffelPiece" parent="." instance=ExtResource("4_0berv")]
+position = Vector2(149, 27)
 
 [connection signal="interact" from="Statue1" to="." method="_on_statue_1_interact"]
 [connection signal="interact" from="Statue2" to="." method="_on_statue_2_interact"]

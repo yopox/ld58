@@ -19,6 +19,7 @@ signal player_shocked()
 # — UI —
 signal show_dialog(speaker_name: String, text: String, position: Vector2)
 signal show_textbox(position: Vector2, speaker_name: String)
+signal show_achievement(title: String, subtitle: String)
 signal textbox_displayed()
 signal hide_textbox()
 signal textbox_hidden()

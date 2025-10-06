@@ -15,6 +15,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Util.dialog_shown: return
 	if Util.cutscene_playing: return
+	if Util.achievement_shown: return
+	
 	if can_interact and Input.is_action_just_pressed("a"):
 		interact.emit()
 

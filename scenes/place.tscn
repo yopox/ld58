@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c20p8uid5qfsa"]
+[gd_scene load_steps=6 format=3 uid="uid://c20p8uid5qfsa"]
 
 [ext_resource type="Script" uid="uid://dewgxenckssve" path="res://scenes/place.gd" id="1_wi51d"]
 [ext_resource type="PackedScene" uid="uid://tbil5pu2sjdx" path="res://actors/player/player.tscn" id="3_5ow0v"]
 [ext_resource type="Theme" uid="uid://1yl3fwpdo5qg" path="res://resources/embalm_bold.tres" id="3_qep2a"]
 [ext_resource type="PackedScene" uid="uid://d310o3x37bmjf" path="res://scenes/ui/textbox.tscn" id="4_bx3fn"]
+[ext_resource type="PackedScene" uid="uid://pv25ptrhwatc" path="res://scenes/ui/achievement.tscn" id="5_qep2a"]
 
 [node name="Place" type="Node2D"]
 script = ExtResource("1_wi51d")
@@ -44,11 +45,4 @@ text = "Place name"
 [node name="Textbox" parent="." instance=ExtResource("4_bx3fn")]
 position = Vector2(91, 56)
 
-;[node name="exit" type="Button" parent="."]
-;offset_left = 304.0
-;offset_right = 323.0
-;offset_bottom = 17.0
-;theme_override_font_sizes/font_size = 6
-;text = "Exit"
-
-;[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[node name="Achievement" parent="." instance=ExtResource("5_qep2a")]

@@ -24,3 +24,9 @@ const WALKABLE_Y: float = SCREEN_H * 0.4
 
 # — PLAYER —
 const PLAYER_SPEED: float = 80.0
+
+# — ACHIEVEMENT —
+const ACHIEVEMENT_OBJECT_TIME: float = 0.75
+const ACHIEVEMENT_CIRCLE_TIME: float = 0.75
+const ACHIEVEMENT_TEXT_TIME: float = 0.25
+const ACHIEVEMENT_TEXT_DELAY: float = 0.5

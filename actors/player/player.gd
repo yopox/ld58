@@ -20,6 +20,7 @@ func player_shocked() -> void:
 func _process(delta: float) -> void:
 	if Util.dialog_shown: return
 	if Util.cutscene_playing: return
+	if Util.achievement_shown: return
 
 	var direction = Vector2.ZERO
 	if Input.is_action_pressed("right"):
