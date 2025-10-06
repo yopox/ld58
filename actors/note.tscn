@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://crnpelln8qmhe"]
+
+[ext_resource type="Texture2D" uid="uid://b3tcjp6la5ujr" path="res://assets/music/notes.png" id="1_ymacw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43aq8"]
+atlas = ExtResource("1_ymacw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymacw"]
+atlas = ExtResource("1_ymacw")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdwbp"]
+atlas = ExtResource("1_ymacw")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owvof"]
+atlas = ExtResource("1_ymacw")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls1gu"]
+atlas = ExtResource("1_ymacw")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kdwbp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43aq8")
+}],
+"loop": true,
+"name": &"A",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymacw")
+}],
+"loop": true,
+"name": &"B",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdwbp")
+}],
+"loop": true,
+"name": &"C",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owvof")
+}],
+"loop": true,
+"name": &"D",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ls1gu")
+}],
+"loop": true,
+"name": &"E",
+"speed": 5.0
+}]
+
+[node name="Note" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_kdwbp")
+animation = &"E"
