@@ -7,8 +7,14 @@ var dir: Vector2
 var x_min: float = 0
 var x_max: float = 360
 
+
+func _ready() -> void:
+	sprite.flip_h = true
+
+
 func _process(delta: float) -> void:
 	if Util.dialog_shown: return
+	if Util.cutscene_playing: return
 	
 	var direction = Vector2.ZERO
 	if Input.is_action_pressed("right"):

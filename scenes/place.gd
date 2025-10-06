@@ -15,6 +15,7 @@ const STATUES: Resource = preload("uid://dcunsckap4hy7")
 var left: bool = true
 var text_tween: Variant = null
 var id: int = 0
+var spawn_in_center: bool = true
 
 
 func _ready() -> void:
@@ -45,9 +46,15 @@ func set_current_place(p: Util.Places) -> void:
 	var place: Location = get_scene(p).instantiate()
 	current.add_child(place)
 	show_place_name(p)
-	if left: player.global_position = place.left.global_position
-	else: player.global_position = place.right.global_position
-	player.set_limits(place.left.global_position, place.right.global_position)
+	
+	var l = place.left.global_position
+	var r = place.right.global_position
+	if spawn_in_center:
+		spawn_in_center = false
+		player.global_position = (l + r) / 2.0
+	elif left: player.global_position = l
+	else: player.global_position = r
+	player.set_limits(l, r)
 
 
 func show_place_name(p: Util.Places) -> void:

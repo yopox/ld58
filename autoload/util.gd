@@ -21,6 +21,7 @@ var places = Places.values()
 
 var current_place: Places = Places.ORSAY
 var dialog_shown: bool = false
+var cutscene_playing: bool = false
 
 
 func show_dialog(speaker_name: String, text: String, position: Vector2) -> void:

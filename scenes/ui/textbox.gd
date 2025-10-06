@@ -45,13 +45,15 @@ func consume_char() -> void:
 			'/':
 				await Signals.confirm
 				text.text = ""
+				line = 0
 			'\n':
-				line += 1
-				if line % 3 == 0:
-					await Signals.confirm
-					text.text = ""
-				else:
-					text.text += "\n"
+				if text.text != "":
+					line += 1
+					if line % 3 == 0:
+						await Signals.confirm
+						text.text = ""
+					else:
+						text.text += "\n"
 			_:
 				text.text += remaining[0]
 		remaining = remaining.substr(1)

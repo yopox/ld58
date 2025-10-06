@@ -22,30 +22,41 @@ var velocities: Array[Vector2] = []
 
 
 func _ready() -> void:
-	await get_tree().create_timer(1).timeout
+	if not Progress.intro_done:
+		Util.cutscene_playing = true
+		await play_intro()
+		Util.cutscene_playing = false
+
+
+func play_intro() -> void:
+	await Util.wait(1)
+	
 	await Util.show_dialog(
 		"Cap Manager",
 		"""
-		This is a top priority mission. An attack
-		is being planned. We forgot about it but I
-		guess we still have time!
+		This is a top priority mission.
+		An attack is being planned./
+		We forgot about it but I guess
+		we still have time!
 		""",
 		dialog_position.global_position
 	)
-	await get_tree().create_timer(0.5).timeout
-
+	
+	await Util.wait(0.5)
 	trigger_explosion()
-	await get_tree().create_timer(1).timeout
+	await Util.wait(4.0)
 
 	await Util.show_dialog(
 		"Cap Manager",
 		"""
-		Bertrand? Are you still there? What
-		happened?
+		Bertrand?$
+		Are you still there?$
+		What happened?
 		""",
 		dialog_position.global_position
 	)
-	Log.info("finished")
+	
+	Progress.intro_done = true
 
 
 func trigger_explosion() -> void:
