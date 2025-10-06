@@ -61,23 +61,24 @@ position = Vector2(202, 186)
 [node name="Right" type="Node2D" parent="Warps"]
 position = Vector2(320, 164)
 
-[node name="Node" type="Node2D" parent="."]
+[node name="ManagerDialog" type="Node2D" parent="."]
+visible = false
 position = Vector2(292, 34)
 
-[node name="Border" type="ColorRect" parent="Node"]
+[node name="Border" type="ColorRect" parent="ManagerDialog"]
 offset_left = -16.0
 offset_top = -26.0
 offset_right = 16.0
 offset_bottom = 25.0
 
-[node name="Background" type="ColorRect" parent="Node"]
+[node name="Background" type="ColorRect" parent="ManagerDialog"]
 offset_left = -15.0
 offset_top = -25.0
 offset_right = 15.0
 offset_bottom = 24.0
 color = Color(0, 0, 0, 1)
 
-[node name="Manager" parent="Node" instance=ExtResource("8_ncy5n")]
+[node name="Manager" parent="ManagerDialog" instance=ExtResource("8_ncy5n")]
 
-[node name="DialogPosition" type="Node2D" parent="Node"]
+[node name="DialogPosition" type="Node2D" parent="ManagerDialog"]
 position = Vector2(-118, 76)

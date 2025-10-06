@@ -7,6 +7,11 @@ var dir: Vector2
 var x_min: float = 0
 var x_max: float = 360
 
+
+func _ready() -> void:
+	sprite.flip_h = true
+
+
 # pour que la petite bite respecte les perspectives (tentative)
 
 # Limites verticales de la scène pour le calcul de la perspective
@@ -19,7 +24,8 @@ var scale_max: float = 0.3
 
 func _process(delta: float) -> void:
 	if Util.dialog_shown: return
-	
+	if Util.cutscene_playing: return
+
 	var direction = Vector2.ZERO
 	if Input.is_action_pressed("right"):
 		if sprite.animation != "walking":
@@ -67,4 +73,4 @@ func update_perspective_scale() -> void:
 
 	# Évite les sous-pixels
 	sprite.position = sprite.position.round()
-	
+

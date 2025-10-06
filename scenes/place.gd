@@ -16,29 +16,30 @@ const METRO: Resource = preload("uid://dcl53jv2pulnk")
 var left: bool = true
 var text_tween: Variant = null
 var id: int = 0
+var spawn_in_center: bool = true
 
 
 func _ready() -> void:
-	set_current_place(Util.current_place)
+	set_current_place(Progress.place)
 	Signals.move_left.connect(move_left)
 	Signals.move_right.connect(move_right)
 
 
 func move_left() -> void:
-	var i = Util.places.find(Util.current_place)
+	var i = Util.places.find(Progress.place)
 	left = false
 	set_current_place(Util.places[posmod(i - 1, Util.places.size())])
 
 
 func move_right() -> void:
-	var i = Util.places.find(Util.current_place)
+	var i = Util.places.find(Progress.place)
 	left = true
 	set_current_place(Util.places[posmod(i + 1, Util.places.size())])
 
 
 func set_current_place(p: Util.Places) -> void:
 	id += 1
-	Util.current_place = p
+	Progress.place = p
 
 	for node in current.get_children():
 		node.queue_free()
@@ -46,9 +47,15 @@ func set_current_place(p: Util.Places) -> void:
 	var place: Location = get_scene(p).instantiate()
 	current.add_child(place)
 	show_place_name(p)
-	if left: player.global_position = place.left.global_position
-	else: player.global_position = place.right.global_position
-	player.set_limits(place.left.global_position, place.right.global_position)
+	
+	var l = place.left.global_position
+	var r = place.right.global_position
+	if spawn_in_center:
+		spawn_in_center = false
+		player.global_position = (l + r) / 2.0
+	elif left: player.global_position = l
+	else: player.global_position = r
+	player.set_limits(l, r)
 
 
 func show_place_name(p: Util.Places) -> void:

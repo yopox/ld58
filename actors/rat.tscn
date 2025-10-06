@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3gdepdxmt38g"]
+
+[ext_resource type="Texture2D" uid="uid://bsec0b32y3puv" path="res://assets/characters/rats.png" id="1_iucni"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekha8"]
+atlas = ExtResource("1_iucni")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0q6v4"]
+atlas = ExtResource("1_iucni")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qah24"]
+atlas = ExtResource("1_iucni")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4bdfs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekha8")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0q6v4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qah24")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[node name="Rat" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_4bdfs")
+animation = &"Walk"
+frame_progress = 0.13183007
