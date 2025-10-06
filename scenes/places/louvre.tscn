@@ -1,11 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://bw3hbaknbx1qh"]
+[gd_scene load_steps=17 format=3 uid="uid://bw3hbaknbx1qh"]
 
 [ext_resource type="Script" uid="uid://xq8bd1q8tp6m" path="res://scenes/places/louvre.gd" id="1_v045g"]
 [ext_resource type="Texture2D" uid="uid://ds8wgbgvoroxr" path="res://assets/backgrounds/louvre_foreground.png" id="2_b5ldh"]
 [ext_resource type="PackedScene" uid="uid://b3tr6v6qcve3q" path="res://actors/actor.tscn" id="2_xbybe"]
 [ext_resource type="Texture2D" uid="uid://c3cuytw0kg858" path="res://assets/backgrounds/louvre.png" id="3_qlqih"]
 [ext_resource type="Texture2D" uid="uid://craeyvjk06pl2" path="res://assets/music/controls.png" id="5_qlqih"]
-[ext_resource type="PackedScene" path="res://actors/eiffel_piece.tscn" id="6_6qlsf"]
+[ext_resource type="PackedScene" uid="uid://ct73006nbve56" path="res://actors/eiffel_piece.tscn" id="6_6qlsf"]
+[ext_resource type="AudioStream" uid="uid://b2bgtffb15c3x" path="res://assets/music/E.wav" id="7_h4ua7"]
+[ext_resource type="AudioStream" uid="uid://ckfl3cl448qsx" path="res://assets/music/D.wav" id="8_ek466"]
+[ext_resource type="AudioStream" uid="uid://c4a66585olo35" path="res://assets/music/C_Low.wav" id="9_l8u00"]
+[ext_resource type="AudioStream" uid="uid://iyibqbmlpqgm" path="res://assets/music/C.wav" id="10_i3ly4"]
+[ext_resource type="AudioStream" uid="uid://dfuo5j8uskdom" path="res://assets/music/B.wav" id="11_xlnur"]
+[ext_resource type="AudioStream" uid="uid://cfejaexc3fyme" path="res://assets/music/A.wav" id="12_g28an"]
 
 [sub_resource type="Curve2D" id="Curve2D_qlqih"]
 _data = {
@@ -62,6 +68,7 @@ curve = SubResource("Curve2D_qlqih")
 
 [node name="Notes" type="Node2D" parent="."]
 visible = false
+z_index = 1
 position = Vector2(7, 6)
 
 [node name="NoteA" type="Node2D" parent="Notes"]
@@ -156,7 +163,37 @@ curve = SubResource("Curve2D_b5ldh")
 position = Vector2(171, 23)
 texture = SubResource("AtlasTexture_q0cd4")
 
+[node name="HitBox" type="Polygon2D" parent="Notes"]
+visible = false
+z_index = -1
+position = Vector2(-9, -1)
+color = Color(0, 0, 0, 0.34509805)
+polygon = PackedVector2Array(165, 24, 189, -1, 251, 54, 227, 77)
+
+[node name="Line2D" type="Line2D" parent="Notes"]
+points = PackedVector2Array(170, 9, 230, 64)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
 [node name="EiffelPiece" parent="." instance=ExtResource("6_6qlsf")]
 position = Vector2(158, 20)
+
+[node name="Audio_E" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_h4ua7")
+
+[node name="Audio_D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ek466")
+
+[node name="Audio_C_low" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_l8u00")
+
+[node name="Audio_C" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_i3ly4")
+
+[node name="Audio_B" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_xlnur")
+
+[node name="Audio_A" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_g28an")
 
 [connection signal="interact" from="MusicPlayer" to="." method="_on_test_interact"]

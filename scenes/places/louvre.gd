@@ -10,21 +10,24 @@ enum RatState {
 
 const NOTE = preload("uid://crnpelln8qmhe")
 const NOTE_ARRIVAL_LENGTH := 4.0
-const NOTE_INTERVAL := 1.0
-const NOTE_QUEUE := ["A", "C", "D", "E", "A", "B", "E", "A", "B", "D", "C"]
+const NOTE_QUEUE = ["C", "B", "A", "E", "D", "C", "B", "A", "E", "D", "C", "B", "A", "E", "D", "C", "C", "B", "A", "E"]
+const DURATIONS = [1.0, 0.5, 0.5, 0.5, 0.5, 0.5, 1.0, 0.5, 0.5, 0.5, 0.5, 0.5, 1.0, 0.5, 0.5, 0.5, 0.5, 0.5, 1.0, 1.0]
 const RAT = preload("uid://c3gdepdxmt38g")
 const RATS_COUNT := 45
 
-var FULL_ANIMATION_LENGTH := NOTE_QUEUE.size() * NOTE_INTERVAL + NOTE_ARRIVAL_LENGTH
+var FULL_ANIMATION_LENGTH := NOTE_QUEUE.size() * 0.5 + NOTE_ARRIVAL_LENGTH
 var RAT_ANIMATION_LENGTH := FULL_ANIMATION_LENGTH / 2
 var SPAWN_INTERVAL := RAT_ANIMATION_LENGTH / RATS_COUNT
-# @onready var audio_players = {
-# 	"a": $Audio_A,
-# 	"b": $Audio_B,
-# 	"c": $Audio_C,
-# 	"d": $Audio_D,
-# 	"e": $Audio_E
-# }
+@onready var audio_players = {
+ 	"A": $Audio_A,
+ 	"B": $Audio_B,
+ 	"C": $Audio_C,
+ 	"D": $Audio_D,
+ 	"E": $Audio_E,
+ }
+@onready var audio_c_low: AudioStreamPlayer2D = $Audio_C_low
+@onready var hit_box: Polygon2D = $Notes/HitBox
+
 var active_notes = {
 	"A": [],
 	"B": [],
@@ -157,7 +160,7 @@ func fire_loose() -> void:
 	)
 
 
-func fire_note_from_queue(note_char: String) -> void:
+func fire_note_from_queue(note_char: String, index) -> void:
 	var note_instance = NOTE.instantiate()
 	note_instance.play(note_char)
 
@@ -171,6 +174,7 @@ func fire_note_from_queue(note_char: String) -> void:
 	tween.tween_property(follow, "progress_ratio", 1.0, NOTE_ARRIVAL_LENGTH)
 	tween.set_trans(Tween.TRANS_LINEAR)
 	follow.set_meta("tween", tween)
+	follow.set_meta("index", index)
 
 	# add to active notes array
 	active_notes[note_char].append(follow)
@@ -180,7 +184,8 @@ func fire_win() -> void:
 	await Util.show_dialog(
 		"Flute player",
 		"""
-		This is such...$ a masterpiece...
+		This is such...$
+		a masterpiece...$
 		(of bread)
 		""",
 		music_player.global_position,
@@ -192,14 +197,23 @@ func fire_win() -> void:
 
 
 func play_note(path_key: String) -> void:
+	var c_low = false
 	var related_notes = active_notes[path_key]
 	if related_notes.size() > 0:
 		var note = related_notes.pop_front()
 		var tween = note.get_meta("tween")
+		var index = note.get_meta("index")
 		if tween.is_running():
 			tween.stop()
 		note.queue_free()
-	# audio_players[path_key].play()
+		c_low = path_key == "C" and index > 6
+		if not Geometry2D.is_point_in_polygon(note.global_position, hit_box.polygon):
+			fire_loose()
+		
+	if c_low:
+		audio_c_low.play()
+	else:
+		audio_players[path_key].play()
 
 
 func process_notes(delta) -> void:
@@ -215,9 +229,9 @@ func process_notes(delta) -> void:
 		play_note("E")
 
 	note_timer += delta
-	if note_timer >= NOTE_INTERVAL and note_index < NOTE_QUEUE.size():
+	if note_index < NOTE_QUEUE.size() && note_timer >= DURATIONS[note_index]:
 		var note_char = NOTE_QUEUE[note_index]
-		fire_note_from_queue(note_char)
+		fire_note_from_queue(note_char, note_index)
 		note_index += 1
 		note_timer = 0.0
 
