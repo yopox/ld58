@@ -12,7 +12,11 @@ var lights = [false, false, false, false, false]
 
 
 func _ready() -> void:
-	inverse([])
+	if Progress.eiffel_pieces.has(Progress.Pieces.Statues):
+		inverse([0, 1, 2, 3, 4])
+		eiffel_piece.visible = false
+	else:
+		inverse([])
 
 
 func _on_statue_1_interact() -> void:
@@ -32,6 +36,8 @@ func _on_statue_4_interact() -> void:
 
 
 func inverse(indices: Array[int]) -> void:
+	if Progress.eiffel_pieces.has(Progress.Pieces.Statues): return
+	
 	for i in indices:
 		lights[i] = not lights[i]
 	
@@ -41,6 +47,10 @@ func inverse(indices: Array[int]) -> void:
 	(light_4.texture as GradientTexture2D).gradient.set_color(0, get_color(3))
 	(light_5.texture as GradientTexture2D).gradient.set_color(0, get_color(4))
 
+	if lights.all(func(b): return b):
+		Progress.eiffel_pieces[Progress.Pieces.Statues] = true
+		Util.achievement_node = eiffel_piece
+		Signals.show_achievement.emit(Values.ACHIEVEMENT_TITLE, Progress.get_subtitle())
 
 func get_color(i: int) -> Color:
 	if lights[i]: return Color("#6bc96c")

@@ -1,13 +1,14 @@
 extends Node
 
-enum Pieces {}
+enum Pieces {
+	Statues
+}
 
 
 var mission_done: bool = false
 var place: Util.Places = Util.Places.ORSAY
 var intro_done: bool = false
 var eiffel_pieces: Dictionary = {}
-var lights_minigame: bool = false
 
 
 func reset() -> void:
@@ -15,4 +16,15 @@ func reset() -> void:
 	place = Util.Places.ORSAY
 	intro_done = false
 	eiffel_pieces = {}
-	lights_minigame = false
+
+
+func get_subtitle() -> String:
+	var remaining = Pieces.values().size() - eiffel_pieces.size()
+	if remaining == 0:
+		return "All pieces collected!"
+	else:
+		return "%s to go!" % remaining
+
+
+func has_all_pieces() -> bool:
+	return eiffel_pieces.size() == Pieces.values().size()
