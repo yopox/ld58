@@ -91,5 +91,5 @@ func _process(delta: float) -> void:
 				explosion_state = ExplosionState.AFTER
 		ExplosionState.AFTER:
 			for i in parts.size():
-				parts[i].visible += false
+				parts[i].visible = false
 				explosion_state = ExplosionState.IDLE

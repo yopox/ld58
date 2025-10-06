@@ -64,6 +64,7 @@ position = Vector2(202, 186)
 position = Vector2(320, 164)
 
 [node name="ManagerDialog" type="Node2D" parent="."]
+visible = false
 position = Vector2(32, 108)
 
 [node name="Border" type="ColorRect" parent="ManagerDialog"]

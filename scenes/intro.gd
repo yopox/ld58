@@ -122,8 +122,6 @@ func play_intro() -> void:
 	await Signals.confirm
 	await Util.hide_textbox()
 	
-	await Util.wait(1.0)
-	
 	Progress.mission_done = true
 	Progress.place = Util.Places.ORSAY
 	Signals.change_scene.emit(Util.Scenes.PLACE)

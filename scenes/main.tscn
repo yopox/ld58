@@ -1,8 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhiq1n6c0jiqv"]
+[gd_scene load_steps=4 format=3 uid="uid://dhiq1n6c0jiqv"]
 
 [ext_resource type="Script" uid="uid://ylmw004akfox" path="res://scenes/main.gd" id="1_o5qli"]
+[ext_resource type="Shader" uid="uid://w8th6km5omp4" path="res://resources/circle_shader.gdshader" id="2_0wfyh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sugp2"]
+shader = ExtResource("2_0wfyh")
+shader_parameter/circle_size = 0.0
+shader_parameter/ratio_width = 320.0
+shader_parameter/ratio_height = 180.0
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_o5qli")
 
 [node name="scene" type="Node" parent="."]
+
+[node name="transition" type="ColorRect" parent="."]
+z_index = 2000
+z_as_relative = false
+material = SubResource("ShaderMaterial_sugp2")
+custom_minimum_size = Vector2(320, 180)
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0.12156863, 0.0627451, 0.16470589, 1)
