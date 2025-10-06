@@ -7,6 +7,8 @@ var remaining: String = ""
 @onready var bubble: NinePatchRect = $Bubble
 @onready var speaker: Label = $Speaker
 @onready var text: Label = $Text
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var color_rect: ColorRect = $ColorRect
 
 
 func _ready() -> void:
@@ -20,6 +22,8 @@ func _ready() -> void:
 	Signals.show_dialog_persist.connect(show_persist)
 	Signals.show_textbox.connect(appear)
 	Signals.hide_textbox.connect(disappear)
+	Signals.talking.connect(start_talk_animation)
+	Signals.stop_talking.connect(stop_talk_animation)
 
 
 func appear(p: Vector2, speaker_name: String) -> void:
@@ -123,3 +127,10 @@ func show_persist(dialog: String) -> void:
 	
 	Signals.stop_talking.emit()
 	Signals.dialog_over.emit()
+	
+func stop_talk_animation() -> void:
+	animation_player.play("blink")
+	
+func start_talk_animation() -> void:
+	animation_player.stop()
+	color_rect.visible = false
