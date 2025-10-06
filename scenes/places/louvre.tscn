@@ -176,6 +176,7 @@ width = 2.0
 default_color = Color(0, 0, 0, 1)
 
 [node name="EiffelPiece" parent="." instance=ExtResource("6_6qlsf")]
+z_index = 100
 position = Vector2(158, 20)
 
 [node name="Audio_E" type="AudioStreamPlayer2D" parent="."]
