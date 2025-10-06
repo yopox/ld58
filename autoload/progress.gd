@@ -3,6 +3,7 @@ extends Node
 enum Pieces {
 	Statues,
 	Rats,
+	Couple,
 }
 
 
