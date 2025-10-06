@@ -11,10 +11,15 @@ var x_max: float = 360
 func _ready() -> void:
 	sprite.flip_h = true
 	Signals.player_shocked.connect(player_shocked)
+	Signals.textbox_displayed.connect(player_idle)
 
 
 func player_shocked() -> void:
 	sprite.play("shocked")
+
+
+func player_idle() -> void:
+	sprite.play("default")
 
 
 func _process(delta: float) -> void:
