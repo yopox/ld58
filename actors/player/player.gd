@@ -10,6 +10,12 @@ var x_max: float = 360
 
 func _ready() -> void:
 	sprite.flip_h = true
+	Signals.player_shocked.connect(player_shocked)
+
+
+func player_shocked() -> void:
+	sprite.play("shocked")
+
 
 func _process(delta: float) -> void:
 	if Util.dialog_shown: return

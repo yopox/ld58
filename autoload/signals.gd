@@ -13,6 +13,9 @@ signal change_scene(scene: Util.Scenes)
 signal move_left()
 signal move_right()
 
+# — PLAYER —
+signal player_shocked()
+
 # — UI —
 signal show_dialog(speaker_name: String, text: String, position: Vector2)
 signal show_textbox(position: Vector2, speaker_name: String)

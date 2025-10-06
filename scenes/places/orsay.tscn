@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://darru1uw78wqs" path="res://assets/tower/piece3.png" id="4_ncy5n"]
 [ext_resource type="Texture2D" uid="uid://rbk42cpqyv1c" path="res://assets/tower/piece2.png" id="5_t8cah"]
 [ext_resource type="Texture2D" uid="uid://brs7hot7jvmty" path="res://assets/tower/piece1.png" id="6_h2olg"]
-[ext_resource type="PackedScene" uid="uid://c6b0ft1kgu6ci" path="res://actors/manager.tscn" id="8_ncy5n"]
+[ext_resource type="PackedScene" uid="uid://dn07y35dlq83k" path="res://actors/manager.tscn" id="8_ncy5n"]
 
 [node name="Orsay" type="Node2D" node_paths=PackedStringArray("left", "right")]
 script = ExtResource("1_wu36w")
@@ -20,12 +20,14 @@ texture = ExtResource("1_1i8bs")
 centered = false
 metadata/_edit_lock_ = true
 
+[node name="Base" type="Sprite2D" parent="."]
+position = Vector2(130, 50)
+texture = ExtResource("2_qfltt")
+
 [node name="EiffelTower" type="Node2D" parent="."]
+visible = false
 position = Vector2(130, 50)
 metadata/_edit_group_ = true
-
-[node name="Base" type="Sprite2D" parent="EiffelTower"]
-texture = ExtResource("2_qfltt")
 
 [node name="Part1" type="Sprite2D" parent="EiffelTower"]
 texture = ExtResource("3_wu36w")
@@ -63,7 +65,7 @@ position = Vector2(320, 164)
 
 [node name="ManagerDialog" type="Node2D" parent="."]
 visible = false
-position = Vector2(292, 34)
+position = Vector2(32, 108)
 
 [node name="Border" type="ColorRect" parent="ManagerDialog"]
 offset_left = -16.0
@@ -81,4 +83,4 @@ color = Color(0, 0, 0, 1)
 [node name="Manager" parent="ManagerDialog" instance=ExtResource("8_ncy5n")]
 
 [node name="DialogPosition" type="Node2D" parent="ManagerDialog"]
-position = Vector2(-118, 76)
+position = Vector2(108, 76)

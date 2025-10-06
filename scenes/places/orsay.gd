@@ -11,6 +11,7 @@ var gravity := Vector2(0, 300)
 var explosion_state = ExplosionState.IDLE
 var velocities: Array[Vector2] = []
 
+@onready var eiffel_tower: Node2D = $EiffelTower
 @onready var parts := [
 	$EiffelTower/Part1,
 	$EiffelTower/Part2,
@@ -22,8 +23,11 @@ var velocities: Array[Vector2] = []
 @onready var dialog_position: Node2D = $ManagerDialog/DialogPosition
 
 
+var textbox_offset = Vector2(0, Values.TEXTBOX_APPEAR_DY + Values.TEXTBOX_H / 2)
+
 func _ready() -> void:
 	if not Progress.intro_done:
+		eiffel_tower.visible = true
 		Util.cutscene_playing = true
 		await play_intro()
 		Util.cutscene_playing = false
@@ -37,14 +41,18 @@ func play_intro() -> void:
 	await Util.show_dialog(
 		Util.BOSS_NAME,
 		"""
+		Bertrand, are you on the field?
+		With this bread costume you should
+		be incognito around here.
 		This is a top priority mission. An attack
 		is being planned. We forgot about it but I
-		guess we still have time!
+		guess that we still have time!
 		""",
-		dialog_position.global_position
+		dialog_position.global_position - textbox_offset
 	)
 	
 	await Util.wait(0.5)
+	Signals.player_shocked.emit()
 	trigger_explosion()
 	await Util.wait(4.0)
 
@@ -55,7 +63,7 @@ func play_intro() -> void:
 		Are you still there?$
 		What happened?
 		""",
-		dialog_position.global_position
+		dialog_position.global_position - textbox_offset
 	)
 	
 	Progress.intro_done = true
