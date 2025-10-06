@@ -46,7 +46,7 @@ metadata/_edit_lock_ = true
 
 [node name="MusicPlayer" parent="." instance=ExtResource("2_xbybe")]
 z_index = 150
-position = Vector2(108, 143)
+position = Vector2(41, 140)
 
 [node name="Warps" type="Node2D" parent="."]
 
