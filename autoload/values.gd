@@ -24,6 +24,7 @@ const HAND_SPEED: float = 50.0
 
 # — PLACES —
 const WALKABLE_Y: float = SCREEN_H * 0.4
+const CHATELET_RIDDLE_SOLVED_DELAY: float = 0.5
 
 # — PLAYER —
 const PLAYER_SPEED: float = 80.0

@@ -4,6 +4,7 @@ enum Pieces {
 	Statues,
 	Rats,
 	Couple,
+	Sphinx,
 }
 
 
@@ -41,7 +42,8 @@ func has_all_pieces() -> bool:
 func piece_for(place: Util.Places) -> Variant:
 	match place:
 		Util.Places.STATUES: return Pieces.Statues
-		#Util.Places.LOUVRE: return true
-		#Util.Places.CHATELET: return true
+		Util.Places.LOUVRE: return Pieces.Rats
+		Util.Places.BIG_FOUNTAIN: return Pieces.Couple
+		Util.Places.CHATELET: return Pieces.Sphinx
 		#Util.Places.POMPIDOU: return true
 	return null

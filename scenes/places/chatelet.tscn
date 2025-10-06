@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://v008qkdot8fp"]
+[gd_scene load_steps=6 format=3 uid="uid://v008qkdot8fp"]
 
-[ext_resource type="Script" uid="uid://cb27baxetpcfl" path="res://scenes/places/location.gd" id="1_rtyuw"]
+[ext_resource type="Script" uid="uid://mriejr2fwm6c" path="res://scenes/places/chatelet.gd" id="1_ux7b8"]
 [ext_resource type="Texture2D" uid="uid://dnbc8cwdk5q8i" path="res://assets/backgrounds/chatelet.png" id="2_x22jd"]
 [ext_resource type="Texture2D" uid="uid://cjq4h27fp2vd" path="res://assets/backgrounds/chatelet_foreground.png" id="3_q07y4"]
+[ext_resource type="PackedScene" uid="uid://b3tr6v6qcve3q" path="res://actors/actor.tscn" id="4_ux7b8"]
+[ext_resource type="PackedScene" uid="uid://ct73006nbve56" path="res://actors/eiffel_piece.tscn" id="5_1ubf5"]
 
 [node name="Chatelet" type="Node2D" node_paths=PackedStringArray("left", "right")]
-script = ExtResource("1_rtyuw")
+script = ExtResource("1_ux7b8")
 left = NodePath("Warps/Left")
 right = NodePath("Warps/Right")
 metadata/_custom_type_script = "uid://cb27baxetpcfl"
@@ -31,3 +33,16 @@ position = Vector2(0, 160)
 
 [node name="Right" type="Node2D" parent="Warps"]
 position = Vector2(320, 160)
+
+[node name="Sphinx" parent="." instance=ExtResource("4_ux7b8")]
+position = Vector2(135, 159)
+
+[node name="Bubble" parent="Sphinx" index="1"]
+position = Vector2(15, -103)
+
+[node name="EiffelPiece" parent="." instance=ExtResource("5_1ubf5")]
+position = Vector2(135, 101)
+
+[connection signal="interact" from="Sphinx" to="." method="_on_sphinx_interact"]
+
+[editable path="Sphinx"]
