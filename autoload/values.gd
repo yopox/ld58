@@ -15,6 +15,9 @@ const TEXTBOX_CHAR_FRAMES: int = 4
 const LOCATION_TITLE_DISAPPEAR_DELAY: float = 2.0
 const LOCATION_TITLE_DISAPPEAR_DURATION: float = 0.5
 
+# — INTRO —
+const INTRO_HAND_APPEAR: float = 0.35
+const HAND_SPEED: float = 50.0
 
 # — PLACES —
 const WALKABLE_Y: float = SCREEN_H * 0.4

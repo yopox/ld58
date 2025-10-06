@@ -35,7 +35,7 @@ func play_intro() -> void:
 	manager_dialog.visible = true
 	
 	await Util.show_dialog(
-		"Cap Manager",
+		Util.BOSS_NAME,
 		"""
 		This is a top priority mission. An attack
 		is being planned. We forgot about it but I
@@ -49,7 +49,7 @@ func play_intro() -> void:
 	await Util.wait(4.0)
 
 	await Util.show_dialog(
-		"Cap Manager",
+		Util.BOSS_NAME,
 		"""
 		Bertrand?$
 		Are you still there?$

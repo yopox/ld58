@@ -19,7 +19,8 @@ enum Scenes {
 
 var places = Places.values()
 
-var current_place: Places = Places.ORSAY
+const BOSS_NAME: String = "Cap Manager"
+
 var dialog_shown: bool = false
 var cutscene_playing: bool = false
 
@@ -27,6 +28,21 @@ var cutscene_playing: bool = false
 func show_dialog(speaker_name: String, text: String, position: Vector2) -> void:
 	Signals.show_dialog.emit(speaker_name, text, position)
 	await Signals.dialog_over
+
+
+func show_dialog_persist(text: String) -> void:
+	Signals.show_dialog_persist.emit(text)
+	await Signals.dialog_over
+
+
+func show_textbox(position: Vector2, speaker_name: String) -> void:
+	Signals.show_textbox.emit(position, speaker_name)
+	await Signals.textbox_displayed
+
+
+func hide_textbox() -> void:
+	Signals.hide_textbox.emit()
+	await Signals.textbox_hidden
 
 
 func wait(amount: float) -> void:

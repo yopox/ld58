@@ -15,5 +15,10 @@ signal move_right()
 
 # — UI —
 signal show_dialog(speaker_name: String, text: String, position: Vector2)
+signal show_textbox(position: Vector2, speaker_name: String)
+signal textbox_displayed()
+signal hide_textbox()
+signal textbox_hidden()
+signal show_dialog_persist(text: String)
 signal dialog_over()
 signal confirm()

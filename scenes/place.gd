@@ -19,26 +19,26 @@ var spawn_in_center: bool = true
 
 
 func _ready() -> void:
-	set_current_place(Util.current_place)
+	set_current_place(Progress.place)
 	Signals.move_left.connect(move_left)
 	Signals.move_right.connect(move_right)
 
 
 func move_left() -> void:
-	var i = Util.places.find(Util.current_place)
+	var i = Util.places.find(Progress.place)
 	left = false
 	set_current_place(Util.places[posmod(i - 1, Util.places.size())])
 
 
 func move_right() -> void:
-	var i = Util.places.find(Util.current_place)
+	var i = Util.places.find(Progress.place)
 	left = true
 	set_current_place(Util.places[posmod(i + 1, Util.places.size())])
 
 
 func set_current_place(p: Util.Places) -> void:
 	id += 1
-	Util.current_place = p
+	Progress.place = p
 
 	for node in current.get_children():
 		node.queue_free()
