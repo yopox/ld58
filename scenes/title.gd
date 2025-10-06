@@ -1,5 +1,10 @@
 extends Node2D
 
+@onready var version: Label = $Version
+
+func _ready() -> void:
+	version.text = ProjectSettings.get_setting("application/config/version")
+
 
 func _process(_delta: float) -> void:
 	if Util.screen_transition: return
