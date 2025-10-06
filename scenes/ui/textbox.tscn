@@ -5,6 +5,7 @@
 [ext_resource type="Theme" uid="uid://ujg1ky4s1f6q" path="res://resources/m3x6.tres" id="3_cjlwn"]
 
 [node name="Textbox" type="Node2D"]
+z_index = 200
 script = ExtResource("1_1wp34")
 
 [node name="Bubble" type="NinePatchRect" parent="."]

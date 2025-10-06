@@ -17,7 +17,7 @@ left = NodePath("Warps/Left")
 right = NodePath("Warps/Right")
 
 [node name="Foreground" type="Sprite2D" parent="."]
-z_index = 1
+z_index = 50
 position = Vector2(0, -33)
 texture = ExtResource("2_b5ldh")
 centered = false
