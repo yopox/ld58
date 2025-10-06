@@ -73,7 +73,7 @@ func _process(delta: float) -> void:
 						"""
 						France? Lovely!
 						Are you sure though?
-						Press space again or select another place.
+						Press space again to confirm.
 						"""
 					)
 				else:

@@ -64,7 +64,6 @@ position = Vector2(202, 186)
 position = Vector2(320, 164)
 
 [node name="ManagerDialog" type="Node2D" parent="."]
-visible = false
 position = Vector2(32, 108)
 
 [node name="Border" type="ColorRect" parent="ManagerDialog"]
@@ -83,4 +82,4 @@ color = Color(0, 0, 0, 1)
 [node name="Manager" parent="ManagerDialog" instance=ExtResource("8_ncy5n")]
 
 [node name="DialogPosition" type="Node2D" parent="ManagerDialog"]
-position = Vector2(108, 76)
+position = Vector2(112, 76)

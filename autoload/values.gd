@@ -4,7 +4,7 @@ extends Node
 const SCREEN_H: int = 180
 const SCREEN_W: int = 320
 
-const TEXTBOX_W: float = 160
+const TEXTBOX_W: float = 180
 const TEXTBOX_H: float = 48
 const TEXTBOX_APPEAR_DELAY: float = 0.2
 const TEXTBOX_APPEAR_DY: float = 4.0

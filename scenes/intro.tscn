@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://rsmqadxb46ht"]
+[gd_scene load_steps=8 format=3 uid="uid://rsmqadxb46ht"]
 
 [ext_resource type="PackedScene" uid="uid://d310o3x37bmjf" path="res://scenes/ui/textbox.tscn" id="1_ioskq"]
 [ext_resource type="Script" uid="uid://bykdje2271bdu" path="res://scenes/intro.gd" id="1_yjqpq"]
 [ext_resource type="Texture2D" uid="uid://c4ae65si0phd7" path="res://assets/ui/map.png" id="2_4bx60"]
+[ext_resource type="Texture2D" uid="uid://ctkbv6vt540kg" path="res://assets/backgrounds/cap.png" id="3_0naf5"]
 [ext_resource type="Texture2D" uid="uid://vbts5pyp2qtn" path="res://assets/ui/pin.png" id="3_wfs7u"]
 [ext_resource type="Texture2D" uid="uid://dypslq4oc1yt6" path="res://assets/ui/hand.png" id="4_i2l1n"]
-[ext_resource type="PackedScene" path="res://actors/manager.tscn" id="6_es01l"]
+[ext_resource type="PackedScene" uid="uid://dn07y35dlq83k" path="res://actors/manager.tscn" id="6_es01l"]
 
 [node name="Intro" type="Node2D"]
 script = ExtResource("1_yjqpq")
@@ -40,41 +41,65 @@ offset_top = -8.0
 offset_right = 74.0
 offset_bottom = 32.0
 
-[node name="ColorRect" type="ColorRect" parent="bg"]
-custom_minimum_size = Vector2(640, 180)
+[node name="NinePatchRect" type="NinePatchRect" parent="bg"]
 layout_mode = 0
-offset_left = -161.0
+offset_left = -34.0
 offset_top = 108.0
-offset_right = 479.0
-offset_bottom = 288.0
-color = Color(0.6509804, 0.52156866, 0.62352943, 1)
+offset_right = 286.0
+offset_bottom = 188.0
+texture = ExtResource("3_0naf5")
+region_rect = Rect2(0, 0, 24, 24)
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="bg"]
+layout_mode = 0
+offset_left = -34.0
+offset_top = 8.0
+offset_right = 78.0
+offset_bottom = 108.0
+texture = ExtResource("3_0naf5")
+region_rect = Rect2(0, 0, 24, 24)
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="bg"]
+layout_mode = 0
+offset_left = -34.0
+offset_top = 8.0
+offset_right = 286.0
+offset_bottom = 32.0
+texture = ExtResource("3_0naf5")
+region_rect = Rect2(0, 0, 24, 24)
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="NinePatchRect4" type="NinePatchRect" parent="bg"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 32.0
+offset_right = 286.0
+offset_bottom = 108.0
+texture = ExtResource("3_0naf5")
+region_rect = Rect2(0, 0, 24, 24)
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="ColorRect" type="ColorRect" parent="bg"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 32.0
+offset_right = 78.0
+offset_bottom = 108.0
+color = Color(1, 0.7647059, 0.9490196, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="bg"]
-custom_minimum_size = Vector2(320, 180)
 layout_mode = 0
-offset_left = 231.0
-offset_top = -15.0
-offset_right = 551.0
-offset_bottom = 165.0
-color = Color(0.6509804, 0.52156866, 0.62352943, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="bg"]
-custom_minimum_size = Vector2(320, 180)
-layout_mode = 0
-offset_left = -242.0
-offset_top = -16.0
-offset_right = 78.0
-offset_bottom = 164.0
-color = Color(0.6509804, 0.52156866, 0.62352943, 1)
-
-[node name="ColorRect4" type="ColorRect" parent="bg"]
-custom_minimum_size = Vector2(640, 180)
-layout_mode = 0
-offset_left = -161.0
-offset_top = -148.0
-offset_right = 479.0
-offset_bottom = 32.0
-color = Color(0.6509804, 0.52156866, 0.62352943, 1)
+offset_left = 234.0
+offset_top = 32.0
+offset_right = 254.0
+offset_bottom = 108.0
+color = Color(1, 0.7647059, 0.9490196, 1)
 
 [node name="Pin" type="Sprite2D" parent="."]
 visible = false
@@ -113,4 +138,4 @@ centered = false
 offset = Vector2(-5, 0)
 
 [node name="Textbox" parent="." instance=ExtResource("1_ioskq")]
-position = Vector2(70, 120)
+position = Vector2(80, 112)
