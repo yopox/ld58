@@ -17,8 +17,9 @@ var velocities: Array[Vector2] = []
 	$EiffelTower/Part3,
 	$EiffelTower/Part4,
 ]
+@onready var manager_dialog: Node2D = $ManagerDialog
 @onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
-@onready var dialog_position: Node2D = $Node/DialogPosition
+@onready var dialog_position: Node2D = $ManagerDialog/DialogPosition
 
 
 func _ready() -> void:
@@ -30,6 +31,8 @@ func _ready() -> void:
 
 func play_intro() -> void:
 	await Util.wait(1)
+	
+	manager_dialog.visible = true
 	
 	await Util.show_dialog(
 		"Cap Manager",
@@ -56,6 +59,7 @@ func play_intro() -> void:
 	)
 	
 	Progress.intro_done = true
+	manager_dialog.visible = false
 
 
 func trigger_explosion() -> void:
