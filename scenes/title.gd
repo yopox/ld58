@@ -2,10 +2,10 @@ extends Node2D
 
 
 func _process(_delta: float) -> void:
+	if Util.screen_transition: return
+	
 	if Input.is_action_just_pressed("a"):
 		if Progress.mission_done:
 			Signals.change_scene.emit(Util.Scenes.PLACE)
 		else:
 			Signals.change_scene.emit(Util.Scenes.INTRO)
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()

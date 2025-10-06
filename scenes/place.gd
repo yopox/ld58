@@ -1,3 +1,4 @@
+class_name Place
 extends Node2D
 
 const LOUVRE: Resource = preload("uid://bw3hbaknbx1qh")
@@ -16,7 +17,6 @@ const METRO: Resource = preload("uid://dcl53jv2pulnk")
 var left: bool = true
 var text_tween: Variant = null
 var id: int = 0
-var spawn_in_center: bool = true
 
 
 func _ready() -> void:
@@ -50,8 +50,8 @@ func set_current_place(p: Util.Places) -> void:
 	
 	var l = place.left.global_position
 	var r = place.right.global_position
-	if spawn_in_center:
-		spawn_in_center = false
+	if Util.spawn_in_center:
+		Util.spawn_in_center = false
 		player.global_position = (l + r) / 2.0
 	elif left: player.global_position = l
 	else: player.global_position = r
@@ -77,7 +77,7 @@ func show_place_name(p: Util.Places) -> void:
 	text_tween.play()
 
 
-func get_place_name(place: Util.Places) -> String:
+static func get_place_name(place: Util.Places) -> String:
 	match place:
 		Util.Places.LOUVRE:
 			return "Louvre Museum"
@@ -94,7 +94,7 @@ func get_place_name(place: Util.Places) -> String:
 		Util.Places.POMPIDOU:
 			return "Pompidou Museum"
 		Util.Places.METRO:
-			return "MRT"
+			return "Metro Station"
 		_:
 			return "Unknown"
 

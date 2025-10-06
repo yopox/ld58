@@ -17,7 +17,19 @@ func _ready() -> void:
 	Signals.change_scene.connect(change_scene)
 
 
+func _process(_delta: float) -> void:
+	if Util.dialog_shown: return
+	if Util.achievement_shown: return
+	if Util.cutscene_playing: return
+	
+	if scene == Util.Scenes.PLACE and Input.is_action_just_pressed("select"):
+		if Progress.metro_ticket:
+			Signals.change_scene.emit(Util.Scenes.PARIS_MAP)
+
+
 func change_scene(new_scene: Util.Scenes) -> void:
+	Util.screen_transition = true
+	
 	var t1 = create_tween()
 	t1.set_trans(Tween.TRANS_QUAD)
 	t1.tween_property(transition, "material:shader_parameter/circle_size", 0.0, Values.TRANSITION_TIME)
@@ -35,6 +47,9 @@ func change_scene(new_scene: Util.Scenes) -> void:
 	var t2 = create_tween()
 	t2.set_trans(Tween.TRANS_QUAD)
 	t2.tween_property(transition, "material:shader_parameter/circle_size", 1.1, Values.TRANSITION_TIME)
+	
+	Util.screen_transition = false
+	scene = new_scene
 
 
 func get_scene(s: Util.Scenes) -> Resource:

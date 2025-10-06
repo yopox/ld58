@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcl53jv2pulnk"]
+[gd_scene load_steps=5 format=3 uid="uid://dcl53jv2pulnk"]
 
 [ext_resource type="Script" uid="uid://d2gjk7ukvwa73" path="res://scenes/places/metro.gd" id="1_4ny0v"]
 [ext_resource type="Texture2D" uid="uid://nh1lm5vk7m6x" path="res://assets/backgrounds/metro.png" id="2_4ny0v"]
 [ext_resource type="PackedScene" uid="uid://b3tr6v6qcve3q" path="res://actors/actor.tscn" id="3_qabp1"]
+[ext_resource type="Texture2D" uid="uid://ctv4ok08fpw7u" path="res://assets/ui/ticket.png" id="4_qabp1"]
 
 [node name="Metro" type="Node2D" node_paths=PackedStringArray("left", "right")]
 script = ExtResource("1_4ny0v")
@@ -14,12 +15,6 @@ position = Vector2(0, 1)
 texture = ExtResource("2_4ny0v")
 centered = false
 
-[node name="Test" parent="." instance=ExtResource("3_qabp1")]
-position = Vector2(41, 157)
-
-[node name="Bubble" parent="Test" index="1"]
-position = Vector2(11, -59)
-
 [node name="Warps" type="Node2D" parent="."]
 position = Vector2(0, 165)
 
@@ -28,6 +23,12 @@ position = Vector2(0, 165)
 [node name="Right" type="Node2D" parent="Warps"]
 position = Vector2(320, -1)
 
-[connection signal="interact" from="Test" to="." method="_on_test_interact"]
+[node name="Ticket" parent="." instance=ExtResource("3_qabp1")]
+position = Vector2(153, 164)
 
-[editable path="Test"]
+[node name="Sprite2D" type="Sprite2D" parent="Ticket"]
+texture = ExtResource("4_qabp1")
+
+[connection signal="interact" from="Ticket" to="." method="_on_ticket_interact"]
+
+[editable path="Ticket"]
