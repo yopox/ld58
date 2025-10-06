@@ -35,9 +35,9 @@ func _ready() -> void:
 
 func play_intro() -> void:
 	await Util.wait(1)
-	
+
 	manager_dialog.visible = true
-	
+
 	await Util.show_dialog(
 		Util.BOSS_NAME,
 		"""
@@ -50,7 +50,7 @@ func play_intro() -> void:
 		""",
 		dialog_position.global_position - textbox_offset
 	)
-	
+
 	await Util.wait(0.5)
 	Signals.player_shocked.emit()
 	trigger_explosion()
@@ -65,7 +65,7 @@ func play_intro() -> void:
 		""",
 		dialog_position.global_position - textbox_offset
 	)
-	
+
 	Progress.intro_done = true
 	manager_dialog.visible = false
 
@@ -82,11 +82,11 @@ func trigger_explosion() -> void:
 func _process(delta: float) -> void:
 	match explosion_state:
 		ExplosionState.ONGOING:
-			var finished = false
+			var finished = true
 			for i in velocities.size():
 				velocities[i] += gravity * delta
 				parts[i].position += velocities[i] * delta
-				finished = finished && parts[i].position.y < 0
+				finished = finished && parts[i].global_position.y > Values.SCREEN_H
 			if finished:
 				explosion_state = ExplosionState.AFTER
 		ExplosionState.AFTER:

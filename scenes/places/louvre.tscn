@@ -60,6 +60,7 @@ position = Vector2(320, 160)
 curve = SubResource("Curve2D_qlqih")
 
 [node name="Notes" type="Node2D" parent="."]
+visible = false
 position = Vector2(7, 6)
 
 [node name="NoteA" type="Node2D" parent="Notes"]
