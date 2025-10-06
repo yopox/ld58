@@ -1,17 +1,17 @@
 extends Location
 
 enum RatState {
-	BEFORE,
+	IDLE,
 	STARTED,
 	BEFORE_EXPLODING,
 	EXPLODING,
-	DONE,
+	WINNING,
 }
 
 const NOTE = preload("uid://crnpelln8qmhe")
 const NOTE_ARRIVAL_LENGTH := 4.0
 const NOTE_INTERVAL := 1.0
-const NOTE_QUEUE := ["A", "C", "D", "E", "A", "B"]
+const NOTE_QUEUE := ["A", "C", "D", "E", "A", "B", "E", "A", "B", "D", "C"]
 const RAT = preload("uid://c3gdepdxmt38g")
 const RATS_COUNT := 45
 
@@ -38,7 +38,7 @@ var gravity := Vector2(0, 300)
 var max_progress := 0.0
 var note_index := 0
 var note_timer := 0.0
-var rat_state = RatState.BEFORE
+var rat_state = RatState.IDLE
 var spawn_timer := 0.0
 var spawned := 0
 var velocities: Array[Vector2] = []
@@ -54,7 +54,11 @@ var velocities: Array[Vector2] = []
 @onready var music_player: Actor = $MusicPlayer
 @onready var rat_path: Path2D = $RatPath
 @onready var notes: Node2D = $Notes
+@onready var eiffel_piece: Sprite2D = $EiffelPiece
 
+
+func _ready() -> void:
+	eiffel_piece.visible = not Progress.eiffel_pieces.get(Progress.Pieces.Rats, false)
 
 func _process(delta: float) -> void:
 	match rat_state:
@@ -69,7 +73,7 @@ func _process(delta: float) -> void:
 					if note.progress_ratio >= 1.0:
 						lost = true
 			if lost:
-				explode()
+				fire_loose()
 
 			for rat in followers:
 				var data = rat_path.curve.sample_baked_with_rotation(rat.progress)
@@ -87,7 +91,8 @@ func _process(delta: float) -> void:
 					spawn_rat()
 
 			if win:
-				rat_state = RatState.DONE
+				rat_state = RatState.WINNING
+				fire_win()
 		RatState.EXPLODING:
 			var finished = true
 			for i in velocities.size():
@@ -96,26 +101,27 @@ func _process(delta: float) -> void:
 					followers[i].position += velocities[i] * delta
 					finished = finished && followers[i].global_position.y > Values.SCREEN_H
 			if finished:
-				rat_state = RatState.BEFORE
 				cleanup_rats()
-				await Util.show_dialog(
-					"Flute player",
-					"""
-					You're not a fresh baguette after all...
-					""",
-					music_player.global_position,
-				)
 
 
 func cleanup_rats() -> void:
+	rat_state = RatState.IDLE
 	notes.visible = false
 	for f in followers:
 		if is_instance_valid(f):
 			f.queue_free()
 	followers.clear()
 	spawned = 0
-	max_progress = 1.0
+	max_progress = 0.0 # reset to 0 so spawning restarts properly
 	spawn_timer = 0.0
+	velocities.clear() # clear explosion velocities
+	note_index = 0 # reset note queue
+	note_timer = 0.0
+	for key in active_notes.keys():
+		for note in active_notes[key]:
+			if is_instance_valid(note):
+				note.queue_free()
+		active_notes[key].clear()
 	Util.cutscene_playing = false
 
 
@@ -139,6 +145,18 @@ func explode() -> void:
 	rat_state = RatState.EXPLODING
 
 
+func fire_loose() -> void:
+	explode()
+	await Util.wait(2)
+	await Util.show_dialog(
+		"Flute player",
+		"""
+		You're not a fresh baguette after all...
+		""",
+		music_player.global_position,
+	)
+
+
 func fire_note_from_queue(note_char: String) -> void:
 	var note_instance = NOTE.instantiate()
 	note_instance.play(note_char)
@@ -156,6 +174,21 @@ func fire_note_from_queue(note_char: String) -> void:
 
 	# add to active notes array
 	active_notes[note_char].append(follow)
+
+
+func fire_win() -> void:
+	await Util.show_dialog(
+		"Flute player",
+		"""
+		This is such...$ a masterpiece...
+		(of bread)
+		""",
+		music_player.global_position,
+	)
+	Progress.eiffel_pieces[Progress.Pieces.Rats] = true
+	Util.achievement_node = eiffel_piece
+	Signals.show_achievement.emit(Values.ACHIEVEMENT_TITLE, Progress.get_subtitle())
+	explode()
 
 
 func play_note(path_key: String) -> void:
@@ -211,21 +244,31 @@ func spawn_rat() -> void:
 	tween.set_trans(Tween.TRANS_LINEAR)
 	tween.tween_callback(
 		func():
-			rat.play("Dance")
+			if rat:
+				rat.play("Dance")
 	)
 	follow.set_meta("tween", tween)
 
 
 func _on_test_interact() -> void:
-	Util.cutscene_playing = true
-	await Util.show_dialog(
-		"Flute player",
-		"""
-		Wow! A walking baguette!
-		You + me, let's do a perfect sound-wich.
-		I've got a rat choir with me, let's go!
-		""",
-		music_player.global_position,
-	)
-	rat_state = RatState.STARTED
-	notes.visible = true
+	if not Progress.eiffel_pieces.get(Progress.Pieces.Rats, false):
+		Util.cutscene_playing = true
+		await Util.show_dialog(
+			"Flute player",
+			"""
+			Wow! A walking baguette!
+			You + me, let's do a perfect sound-wich.
+			I've got a rat choir with me, let's go!
+			""",
+			music_player.global_position,
+		)
+		rat_state = RatState.STARTED
+		notes.visible = true
+	else:
+		await Util.show_dialog(
+			"Flute player",
+			"""
+			Your sound made me out of bread!
+			""",
+			music_player.global_position,
+		)

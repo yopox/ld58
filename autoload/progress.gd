@@ -1,7 +1,8 @@
 extends Node
 
 enum Pieces {
-	Statues
+	Statues,
+	Rats,
 }
 
 
