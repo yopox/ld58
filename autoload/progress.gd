@@ -9,6 +9,7 @@ enum Pieces {
 var mission_done: bool = false
 var place: Util.Places = Util.Places.ORSAY
 var intro_done: bool = false
+var outro_done: bool = false
 var eiffel_pieces: Dictionary = {}
 
 

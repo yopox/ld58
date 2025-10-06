@@ -20,7 +20,7 @@ offset_right = 320.0
 offset_bottom = 88.0
 theme = ExtResource("2_wosw1")
 theme_override_font_sizes/font_size = 32
-text = "Paris"
+text = "Cap Corp"
 horizontal_alignment = 1
 
 [node name="Oscillator" type="Node" parent="Title"]
