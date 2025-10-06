@@ -27,8 +27,9 @@ func _on_romantic_couple_interact() -> void:
 		await Util.show_dialog(
 			"Passionate date person",
 			"""
-			Now you lifted this heavy weight off my chest,
-			I actually start to like this person!
+			Now you lifted this heavy weight off my
+			chest, I actually start to like this
+			person!
 			""",
 			romantic_couple.global_position,
 		)
