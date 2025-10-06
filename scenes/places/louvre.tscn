@@ -1,15 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw3hbaknbx1qh"]
+[gd_scene load_steps=10 format=3 uid="uid://bw3hbaknbx1qh"]
 
 [ext_resource type="Script" uid="uid://xq8bd1q8tp6m" path="res://scenes/places/louvre.gd" id="1_v045g"]
 [ext_resource type="Texture2D" uid="uid://ds8wgbgvoroxr" path="res://assets/backgrounds/louvre_foreground.png" id="2_b5ldh"]
 [ext_resource type="PackedScene" uid="uid://b3tr6v6qcve3q" path="res://actors/actor.tscn" id="2_xbybe"]
 [ext_resource type="Texture2D" uid="uid://c3cuytw0kg858" path="res://assets/backgrounds/louvre.png" id="3_qlqih"]
+[ext_resource type="Texture2D" uid="uid://craeyvjk06pl2" path="res://assets/music/controls.png" id="5_qlqih"]
 
 [sub_resource type="Curve2D" id="Curve2D_qlqih"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 79, 162, 0, 0, 0, 0, 167, 89, 0, 0, 0, 0, 253, 158, 0, 0, 0, 0, 277, 156, 0, 0, 0, 0, 164, 70, 0, 0, 0, 0, 57, 158, 0, 0, 0, 0, 31, 158, 0, 0, 0, 0, 162, 53, 0, 0, 0, 0, 300, 160, 0, 0, 0, 0, 324, 160, 0, 0, 0, 0, 158, 29, 0, 0, 0, 0, 14, 147)
 }
 point_count = 12
+
+[sub_resource type="Curve2D" id="Curve2D_b5ldh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 274, -69, 0, 0, 0, 0, 172, 33)
+}
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qlsf"]
+atlas = ExtResource("5_qlqih")
+region = Rect2(0, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0cd4"]
+atlas = ExtResource("5_qlqih")
+region = Rect2(9, 0, 9, 9)
 
 [node name="Louvre" type="Node2D" node_paths=PackedStringArray("left", "right")]
 script = ExtResource("1_v045g")
@@ -21,14 +36,17 @@ z_index = 50
 position = Vector2(0, -33)
 texture = ExtResource("2_b5ldh")
 centered = false
+metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(0, -33)
 texture = ExtResource("3_qlqih")
 centered = false
+metadata/_edit_lock_ = true
 
-[node name="Test" parent="." instance=ExtResource("2_xbybe")]
-position = Vector2(138, 145)
+[node name="MusicPlayer" parent="." instance=ExtResource("2_xbybe")]
+z_index = 150
+position = Vector2(108, 143)
 
 [node name="Warps" type="Node2D" parent="."]
 
@@ -41,4 +59,99 @@ position = Vector2(320, 160)
 [node name="RatPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_qlqih")
 
-[connection signal="interact" from="Test" to="." method="_on_test_interact"]
+[node name="Notes" type="Node2D" parent="."]
+position = Vector2(7, 6)
+
+[node name="NoteA" type="Node2D" parent="Notes"]
+position = Vector2(-5, 0)
+metadata/_edit_group_ = true
+
+[node name="Line2D" type="Line2D" parent="Notes/NoteA"]
+position = Vector2(-199.00002, -58.000004)
+scale = Vector2(1.8461539, 1.8461539)
+points = PackedVector2Array(249, 1, 201, 49)
+width = 2.0
+default_color = Color(1, 0.64705884, 0.6666667, 1)
+
+[node name="PathA" type="Path2D" parent="Notes/NoteA"]
+curve = SubResource("Curve2D_b5ldh")
+
+[node name="Command" type="Sprite2D" parent="Notes/NoteA"]
+position = Vector2(171, 22)
+rotation = 1.5707964
+texture = SubResource("AtlasTexture_6qlsf")
+
+[node name="NoteB" type="Node2D" parent="Notes"]
+position = Vector2(6, 9)
+metadata/_edit_group_ = true
+
+[node name="Line2D" type="Line2D" parent="Notes/NoteB"]
+position = Vector2(-199.00002, -58.000004)
+scale = Vector2(1.8461539, 1.8461539)
+points = PackedVector2Array(249, 1, 201, 49)
+width = 2.0
+default_color = Color(0.8352941, 0.6627451, 0.827451, 1)
+
+[node name="PathB" type="Path2D" parent="Notes/NoteB"]
+curve = SubResource("Curve2D_b5ldh")
+
+[node name="Command" type="Sprite2D" parent="Notes/NoteB"]
+position = Vector2(171, 23)
+texture = SubResource("AtlasTexture_6qlsf")
+
+[node name="NoteC" type="Node2D" parent="Notes"]
+position = Vector2(17, 18)
+metadata/_edit_group_ = true
+
+[node name="Line2D" type="Line2D" parent="Notes/NoteC"]
+position = Vector2(-199.00002, -58.000004)
+scale = Vector2(1.8461539, 1.8461539)
+points = PackedVector2Array(249, 1, 201, 49)
+width = 2.0
+default_color = Color(0.6639111, 0.7565208, 1, 1)
+
+[node name="PathC" type="Path2D" parent="Notes/NoteC"]
+curve = SubResource("Curve2D_b5ldh")
+
+[node name="Command" type="Sprite2D" parent="Notes/NoteC"]
+position = Vector2(171, 23)
+rotation = -1.5707964
+texture = SubResource("AtlasTexture_6qlsf")
+
+[node name="NoteD" type="Node2D" parent="Notes"]
+position = Vector2(27, 27)
+metadata/_edit_group_ = true
+
+[node name="Line2D" type="Line2D" parent="Notes/NoteD"]
+position = Vector2(-199.00002, -58.000004)
+scale = Vector2(1.8461539, 1.8461539)
+points = PackedVector2Array(256.20837, -5.958332, 201, 49)
+width = 2.0
+default_color = Color(0.6818667, 0.9999997, 0.833251, 1)
+
+[node name="PathD" type="Path2D" parent="Notes/NoteD"]
+curve = SubResource("Curve2D_b5ldh")
+
+[node name="Command" type="Sprite2D" parent="Notes/NoteD"]
+position = Vector2(171, 23)
+rotation = 3.1415927
+texture = SubResource("AtlasTexture_6qlsf")
+
+[node name="NoteE" type="Node2D" parent="Notes"]
+position = Vector2(38, 36)
+
+[node name="Line2D" type="Line2D" parent="Notes/NoteE"]
+position = Vector2(-199, -58)
+scale = Vector2(1.847, 1.84)
+points = PackedVector2Array(256.6324, -6.521738, 201, 49)
+width = 2.0
+default_color = Color(0.9797477, 1, 0.794107, 1)
+
+[node name="PathE" type="Path2D" parent="Notes/NoteE"]
+curve = SubResource("Curve2D_b5ldh")
+
+[node name="Command" type="Sprite2D" parent="Notes/NoteE"]
+position = Vector2(171, 23)
+texture = SubResource("AtlasTexture_q0cd4")
+
+[connection signal="interact" from="MusicPlayer" to="." method="_on_test_interact"]
