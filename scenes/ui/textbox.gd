@@ -48,8 +48,10 @@ func consume_char() -> void:
 	if frame == Values.TEXTBOX_CHAR_FRAMES:
 		match remaining[0]:
 			'$':
+				Signals.stop_talking.emit()
 				await Signals.confirm
 			'/':
+				Signals.stop_talking.emit()
 				await Signals.confirm
 				text.text = ""
 				line = 0
@@ -58,12 +60,14 @@ func consume_char() -> void:
 					line += 1
 					if line % 3 == 0:
 						if not Util.textbox_auto_next:
+							Signals.stop_talking.emit()
 							await Signals.confirm
-						if remaining.length() > 1:
+						if remaining.length() > 4:
 							text.text = ""
 					else:
 						text.text += "\n"
 			_:
+				Signals.talking.emit()
 				text.text += remaining[0]
 		remaining = remaining.substr(1)
 		frame = 0
@@ -103,6 +107,7 @@ func show_dialog(speaker_name: String, dialog: String, p: Vector2) -> void:
 	while remaining != "":
 		await consume_char()
 
+	Signals.stop_talking.emit()
 	await Signals.confirm
 	await disappear()
 
@@ -116,4 +121,5 @@ func show_persist(dialog: String) -> void:
 	while remaining != "":
 		await consume_char()
 	
+	Signals.stop_talking.emit()
 	Signals.dialog_over.emit()

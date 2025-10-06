@@ -1,12 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6b0ft1kgu6ci"]
+[gd_scene load_steps=9 format=3 uid="uid://dn07y35dlq83k"]
 
 [ext_resource type="Texture2D" uid="uid://lhw6762r258w" path="res://assets/characters/manager.png" id="1_lhbku"]
+[ext_resource type="Script" uid="uid://pmi4xd3xg1mj" path="res://actors/manager.gd" id="1_xaro1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xaro1"]
-atlas = ExtResource("1_lhbku")
-region = Rect2(0, 0, 30, 47)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p2qhg"]
 atlas = ExtResource("1_lhbku")
 region = Rect2(0, 0, 30, 47)
 
@@ -22,6 +19,10 @@ region = Rect2(60, 0, 30, 47)
 atlas = ExtResource("1_lhbku")
 region = Rect2(30, 0, 30, 47)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2qhg"]
+atlas = ExtResource("1_lhbku")
+region = Rect2(0, 0, 30, 47)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_4q3k2"]
 animations = [{
 "frames": [{
@@ -34,9 +35,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p2qhg")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_ob1fp")
 }, {
 "duration": 1.0,
@@ -44,13 +42,17 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lhbku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2qhg")
 }],
 "loop": true,
 "name": &"Talking",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="Manager" type="Node2D"]
+script = ExtResource("1_xaro1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4q3k2")

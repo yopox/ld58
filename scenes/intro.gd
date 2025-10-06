@@ -119,6 +119,7 @@ func play_intro() -> void:
 		see you on the field!
 		"""
 	) 
+	await Signals.confirm
 	await Util.hide_textbox()
 	
 	await Util.wait(1.0)
