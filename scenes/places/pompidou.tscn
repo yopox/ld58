@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjk40iqthhx31"]
 
-[ext_resource type="Script" uid="uid://cb27baxetpcfl" path="res://scenes/places/location.gd" id="1_lfgka"]
+[ext_resource type="Script" uid="uid://dyctvje8rrflr" path="res://scenes/places/pompidou.gd" id="1_esm5d"]
 [ext_resource type="Texture2D" uid="uid://cukuqbp0ctqp4" path="res://assets/backgrounds/pompidou.png" id="2_esm5d"]
 [ext_resource type="PackedScene" uid="uid://b3tr6v6qcve3q" path="res://actors/actor.tscn" id="3_esm5d"]
 [ext_resource type="Texture2D" uid="uid://cp15asmyusbwi" path="res://assets/characters/phryge.png" id="4_cntf7"]
 
 [node name="Pompidou" type="Node2D" node_paths=PackedStringArray("left", "right")]
-script = ExtResource("1_lfgka")
+script = ExtResource("1_esm5d")
 left = NodePath("Warps/Left")
 right = NodePath("Warps/Right")
 metadata/_custom_type_script = "uid://cb27baxetpcfl"
@@ -23,10 +23,12 @@ position = Vector2(0, 151)
 [node name="Right" type="Node2D" parent="Warps"]
 position = Vector2(320, 12)
 
-[node name="Actor" parent="." instance=ExtResource("3_esm5d")]
+[node name="Phryge" parent="." instance=ExtResource("3_esm5d")]
 position = Vector2(255, 142)
 
-[node name="Sprite2D" type="Sprite2D" parent="Actor"]
+[node name="Sprite2D" type="Sprite2D" parent="Phryge"]
 texture = ExtResource("4_cntf7")
 
-[editable path="Actor"]
+[connection signal="interact" from="Phryge" to="." method="_on_phryge_interact"]
+
+[editable path="Phryge"]
