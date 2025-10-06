@@ -11,7 +11,7 @@ const STATUES: Resource = preload("uid://dcunsckap4hy7")
 const METRO: Resource = preload("uid://dcl53jv2pulnk")
 
 @onready var current: Node = $Current
-@onready var place_name: Control = $NameContainer
+@onready var place_name: Label = $Name
 @onready var player: Player = $Player
 
 var left: bool = true
@@ -63,8 +63,7 @@ func show_place_name(p: Util.Places) -> void:
 		(text_tween as Tween).stop()
 	
 	var pn = get_place_name(p)
-	for text in place_name.get_children():
-		text.text = pn
+	place_name.text = pn
 	place_name.modulate = Color("fff")
 	
 	var i = id
