@@ -30,7 +30,7 @@ func _on_sphinx_interact() -> void:
 			"""
 			With a distant technology,
 			Travel, travel,
-			But stay close to me! 
+			from me, to me!
 			""",
 			sphinx.position
 		)
